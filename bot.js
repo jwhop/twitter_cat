@@ -68,7 +68,8 @@ function personalize(str, usr)
 app.use('/', router);
 app.post('/', (req, res) => {
 	//console.log(req.body.favorite_events);
-	
+
+	console.log(req.body);
 	if(req.body.favorite_events != null)
 	{
 		var tweet = req.body.favorite_events[0];
@@ -76,7 +77,7 @@ app.post('/', (req, res) => {
 				{
 					console.log("we got a new user!");
 					console.log(tweet);
-					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, visiting: false, visiting_timer: setTimeout(function(){ this.visiting = false; }, 1000*60*1)});
+					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, visiting: false, visiting_timer: setTimeout(function(){ this.visiting = false; }, 1000*60*60*24)});
 
 				}
 		
@@ -97,9 +98,10 @@ app.post('/', (req, res) => {
 				console.log("lonely! reply!")
 				});
 		
-		},1000*60*5);
+		},1000*60*60*24);
 		
 	}
+	
 });
 
 const PORT = process.env.PORT || 3000;
