@@ -74,10 +74,11 @@ app.post('/', (req, res) => {
 		if(typeof usr_directory.find(user => user.id === tweet.user.id_str) === 'undefined')
 				{
 					console.log("we got a new user!");
+					console.log(tweet);
 					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, visiting: false, visiting_timer: setTimeout(function(){ this.visiting = false; }, 1000*60*1)});
-					
+
 				}
-		T.post('statuses/update', { status: personalize(pet_meows[Math.floor(Math.random()*idle_meows.length)], tweet.user.screen_name)
+		T.post('statuses/update', { status: personalize(pet_meows[Math.floor(Math.random()*pet_meows.length)], tweet.user.screen_name)
 					}, function(err, data, response) {
 				console.log("pet reply!")
 				});
