@@ -63,15 +63,7 @@ function personalize(str, usr)
 	return string;
 	
 }
-function lonely_check(name)
-{
-	T.post('statuses/update', { status: personalize(lonely_meows[Math.floor(Math.random()*lonely_meows.length)], name)
-					}, function(err, data, response) {
-				console.log("lonely! reply!")
-				});
-	
-	//timer = setTimeout(lonely_check(name, timer), 1000*60*2);
-}
+
 // mount the router on the app
 app.use('/', router);
 app.post('/', (req, res) => {
@@ -97,7 +89,15 @@ app.post('/', (req, res) => {
 				console.log("pet reply!")
 				});
 		
-		tg.visiting_timer = setTimeout(lonely_check(tg.name), 1000*60*2);
+		
+		tg.visiting_timer = setTimeout(function(){
+			
+			T.post('statuses/update', { status: personalize(lonely_meows[Math.floor(Math.random()*lonely_meows.length)], name)
+					}, function(err, data, response) {
+				console.log("lonely! reply!")
+				});
+		
+		},1000*60*5);
 		
 	}
 });
