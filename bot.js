@@ -19,7 +19,7 @@ console.log('Authentication successful. Running bot...\r\n')
 const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 	
-app.post('/msg', (req, res) => {
+app.post('/sms', (req, res) => {
   console.log("heyo"); 
   
 });
