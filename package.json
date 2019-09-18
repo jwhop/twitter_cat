@@ -1,0 +1,28 @@
+{
+  "name": "Belle-the-twitter-cat",
+  "version": "1.0.0",
+  "description": "Simple Twitter bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jwhop/twitter_cat"
+  },
+  "author": "Jonny Hopkins",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jwhop/twitter_cat/issues"
+  },
+  "homepage": "https://github.com/jwhop/twitter_cat#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "twilio": "^3.34.0",
+    "twit": "^2.2.11"
+  }, 
+  "engines": {
+        "node": "v10.16.3"
+  }
+}
