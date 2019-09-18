@@ -19,21 +19,11 @@ console.log('Authentication successful. Running bot...\r\n')
 const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 	
-app.post('/sms', (req, res) => {
-  console.log(req.body.Body); 
-  var msg = req.body.Body;
-  var words = msg.split(" ");
-  
-  //if first word is handle
-  if (words[0][0] == '@')
-  {
-	 if(words[1] == "liked")
-	 {
-		console.log("WE OUT HERE WORKING");
-	 }		 
-  }
+app.post('/msg', (req, res) => {
+  console.log("heyo"); 
   
 });
+
 const PORT = process.env.PORT || 3000;
 http.createServer(app).listen(PORT, () => {
   console.log('Express server listening on port' + PORT);
