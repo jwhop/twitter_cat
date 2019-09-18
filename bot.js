@@ -8,6 +8,8 @@ var crypto = require('crypto');
 
 var usr_directory = [];
 var tweet_directory = [];
+
+
  var T = new Twitter({
         consumer_key: process.env.CONSUMER_KEY,
         consumer_secret: process.env.CONSUMER_SECRET,
@@ -19,7 +21,7 @@ var tweet_directory = [];
 console.log('Authentication successful. Running bot...\r\n')
 
 const app = express();
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 var router = express.Router();
 
 
