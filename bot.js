@@ -3,6 +3,8 @@ const http = require('http');
 const express = require('express');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 var bodyParser = require('body-parser');
+var crypto = require('crypto');
+
 
 var usr_directory = [];
 var tweet_directory = [];
@@ -20,7 +22,12 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 	
 app.post('/sms', (req, res) => {
-  console.log("heyo"); 
+	console.log(req);
+	
+	var key = process.env.CONSUMER_SECRET;
+	var message = req.crc_token;
+	var hash = crypto.createHmac('sha256', key).update(message);
+	res.send(hash);
   
 });
 
