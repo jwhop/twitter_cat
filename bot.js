@@ -55,13 +55,33 @@ router.use('/', function (req, res, next) {
   next()
 });
 
+function personalize(str, usr)
+{
+	var string = "";
+	string += String(usr);
+	string += (str);
+	return string;
+	
+}
 // mount the router on the app
 app.use('/', router);
 app.post('/', (req, res) => {
-	console.log(req.body.favorite_events);
+	//console.log(req.body.favorite_events);
 	
-	
-  
+	if(req.body.favorite_events != null)
+	{
+		var tweet = req.body.favorite_events;
+		if(typeof usr_directory.find(user => user.id === tweet.user.id_str) === 'undefined')
+				{
+					console.log("we got a new user!");
+					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, visiting: false, visiting_timer: setTimeout(function(){ this.visiting = false; }, 1000*60*1)});
+					
+				}
+		T.post('statuses/update', { status: personalize(pet_meows[Math.floor(Math.random()*idle_meows.length)], tweet.user.screen_name)
+					}, function(err, data, response) {
+				console.log("pet reply!")
+				});
+	}
 });
 
 const PORT = process.env.PORT || 3000;
@@ -88,7 +108,7 @@ var pet_meows = [' gives Belle some chin scratches.  \n\
               ∧__∧　           \n\
 　　     (  ^ . ^ ) (              She blinks\n\
        ____ |  ¥  |__)_________  slowly at \n\
-             (_\\__/_)                   you.          \n\
+             (_\\__/_)                   them.          \n\
       ——————/———',' gives Belle some chin scratches.  \n\
               ∧__∧　           \n\
 　　     (  ^ . ^ ) (              They feel \n\
@@ -118,7 +138,7 @@ var pet_meows = [' gives Belle some chin scratches.  \n\
               ∧__∧　           \n\
 　　     (  ^ . ^ ) (              She blinks\n\
        ____ |  ¥  |__)_________  slowly at \n\
-             (_\\__/_)                   you.          \n\
+             (_\\__/_)                   them.          \n\
       ——————/———',' scratches Belle behind her ears.  \n\
               ∧__∧　           \n\
 　　     (  ^ . ^ ) (              They feel \n\
@@ -148,7 +168,7 @@ var pet_meows = [' gives Belle some chin scratches.  \n\
               ∧__∧　           \n\
 　　     (  ^ . ^ ) (              She blinks\n\
        ____ |  ¥  |__)_________  slowly at \n\
-             (_\\__/_)                   you.          \n\
+             (_\\__/_)                   them.          \n\
       ——————/———',' pats Belle on her head.  \n\
               ∧__∧　           \n\
 　　     (  ^ . ^ ) (              They feel \n\
@@ -178,7 +198,7 @@ var pet_meows = [' gives Belle some chin scratches.  \n\
               ∧__∧　           \n\
 　　     (  ^ . ^ ) (              She blinks\n\
        ____ |  ¥  |__)_________  slowly at \n\
-             (_\\__/_)                   you.          \n\
+             (_\\__/_)                   them.          \n\
       ——————/———',' pets Belle along her back.  \n\
               ∧__∧　           \n\
 　　     (  ^ . ^ ) (              They feel \n\
@@ -208,7 +228,7 @@ var pet_meows = [' gives Belle some chin scratches.  \n\
               ∧__∧　           \n\
 　　     (  ^ . ^ ) (              She blinks\n\
        ____ |  ¥  |__)_________  slowly at \n\
-             (_\\__/_)                   you.          \n\
+             (_\\__/_)                   them.          \n\
       ——————/———',' gives Belle belly rubs.  \n\
               ∧__∧　           \n\
 　　     (  ^ . ^ ) (              They feel \n\
@@ -377,6 +397,8 @@ function tweet_type(m)
 stream.on('favorite', function (event) {
   console.log('boo!');
 })
+
+
 stream.on('tweet', function (tweet) {
 			console.log(tweet);
 
