@@ -37,7 +37,7 @@ router.use('/', function (req, res, next) {
 	
 	hmac = crypto.createHmac('sha256', process.env.CONSUMER_SECRET).update(req.query.crc_token).digest('base64')
 
-	var txt = '{ "response_token": ' + 'sha256='+String(hmac) + '}';
+	var txt = '{ "response_token": ' + 'sha256="'+String(hmac) + '"}';
 	console.log(txt);
 	var obj = JSON.parse(txt);
 	console.log(obj);
