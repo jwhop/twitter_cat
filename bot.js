@@ -36,8 +36,9 @@ router.use('/', function (req, res, next) {
 	var message = req.query.crc_token;
 	var hash = crypto.createHmac('sha256', key).update(message);
 	
-	var text = '{ "response_token" : ' + String(hash) +' }';
-	var obj = JSON.parse(text);
+	var txt = '{ "response_token" : ' + String(hash) +' }';
+	console.log(txt);
+	var obj = JSON.parse(txt);
 	console.log(obj);
 	
 	res.send(obj);
