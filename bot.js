@@ -67,7 +67,7 @@ function lonely_check(name)
 {
 	T.post('statuses/update', { status: personalize(lonely_meows[Math.floor(Math.random()*lonely_meows.length)], name)
 					}, function(err, data, response) {
-				console.log("pet reply!")
+				console.log("lonely! reply!")
 				});
 	
 	//timer = setTimeout(lonely_check(name, timer), 1000*60*2);
@@ -90,12 +90,15 @@ app.post('/', (req, res) => {
 		
 		var tg = usr_directory[usr_directory.findIndex(find_usr, tweet.user.id_str)];
 		
-		tg.visiting_timer = setTimeout(lonely_check(tg.name), 1000*60*2);
-		
+		clearTimeout(tg.visiting_timer);
+
 		T.post('statuses/update', { status: personalize(pet_meows[Math.floor(Math.random()*pet_meows.length)], tweet.user.screen_name)
 					}, function(err, data, response) {
 				console.log("pet reply!")
 				});
+		
+		tg.visiting_timer = setTimeout(lonely_check(tg.name), 1000*60*2);
+		
 	}
 });
 
