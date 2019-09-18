@@ -416,7 +416,7 @@ stream.on('favorite', function (event) {
   console.log('boo!');
 })
 
-
+/*
 stream.on('tweet', function (tweet) {
 			console.log(tweet);
 
@@ -490,5 +490,5 @@ stream.on('tweet', function (tweet) {
 		
 stream.on('error', function(err) {
 	throw err;
-});
+});*/
 
