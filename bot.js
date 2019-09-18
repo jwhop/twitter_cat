@@ -31,18 +31,14 @@ router.use(function (req, res, next) {
 
 // a middleware sub-stack shows request info for any type of HTTP request to the /user/:id path
 router.use('/', function (req, res, next) {
-  console.log(req.query.crc_token);
-	var key = process.env.CONSUMER_SECRET;
-	var message = req.query.crc_token;
-	var hash = crypto.createHmac('sha256', key).update(message);
-	console.log(hash);
-
-	var txt = '{ "response_token" : ' + String(hash) +' }';
-	console.log(txt);
-	var obj = JSON.parse(txt);
-	console.log(obj);
 	
-	res.send(obj);
+	console.log(req.query.crc_token);
+	
+	
+	hmac = crypto.createHmac('sha256', process.env.CONSUMER_SECRET).update(req.query.crc_token).digest('base64')
+
+	
+	res.send(hmac);
   next()
 }, function (req, res, next) {
   console.log('Request Type:', req.method)
