@@ -35,7 +35,7 @@ router.use('/', function (req, res, next) {
 	var key = process.env.CONSUMER_SECRET;
 	var message = req.query.crc_token;
 	var hash = crypto.createHmac('sha256', key).update(message);
-	res.send(hash);
+	res.send('{\nresponse_token: + hash +\n}');
   next()
 }, function (req, res, next) {
   console.log('Request Type:', req.method)
