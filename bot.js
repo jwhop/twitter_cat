@@ -70,11 +70,11 @@ app.post('/', (req, res) => {
 	
 	if(req.body.favorite_events != null)
 	{
-		var tweet = JSON.parse(req.body.favorite_events);
+		var tweet = req.body.favorite_events[0];
 		if(typeof usr_directory.find(user => user.id === tweet.user.id_str) === 'undefined')
 				{
 					console.log("we got a new user!");
-					console.log(tweet.user);
+					console.log(tweet);
 					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, visiting: false, visiting_timer: setTimeout(function(){ this.visiting = false; }, 1000*60*1)});
 
 				}
