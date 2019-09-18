@@ -92,7 +92,7 @@ app.post('/', (req, res) => {
 		
 		tg.visiting_timer = setTimeout(function(){
 			
-			T.post('statuses/update', { status: personalize(lonely_meows[Math.floor(Math.random()*lonely_meows.length)], name)
+			T.post('statuses/update', { status: personalize(lonely_meows[Math.floor(Math.random()*lonely_meows.length)], tg.name), name)
 					}, function(err, data, response) {
 				console.log("lonely! reply!")
 				});
