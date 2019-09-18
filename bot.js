@@ -70,7 +70,7 @@ function lonely_check(name, timer )
 				console.log("pet reply!")
 				});
 	
-	timer = setTimeout(lonely_check(name, timer)}, 1000*60*2);
+	timer = setTimeout(lonely_check(name, timer), 1000*60*2);
 }
 // mount the router on the app
 app.use('/', router);
@@ -89,7 +89,7 @@ app.post('/', (req, res) => {
 				}
 		
 		var tg = usr_directory[usr_directory.findIndex(find_usr, tweet.user.id_str)];
-		tg.visiting_timer = setTimeout(lonely_check(tg.name, tg.visiting_timer)}, 1000*60*2);
+		tg.visiting_timer = setTimeout(lonely_check(tg.name, tg.visiting_timer), 1000*60*2);
 		
 		T.post('statuses/update', { status: personalize(pet_meows[Math.floor(Math.random()*pet_meows.length)], tweet.user.screen_name)
 					}, function(err, data, response) {
