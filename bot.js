@@ -20,13 +20,7 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 	
 app.post('/sms', (req, res) => {
-   console.log(req.body); 
-  const twiml = new MessagingResponse();
-	
-  twiml.message('The Robots are coming! Head for the hills!');
-
-  res.writeHead(200, {'Content-Type': 'text/xml'});
-  res.end(twiml.toString());
+  console.log(req.body.Body); 
 });
 const PORT = process.env.PORT || 3000;
 http.createServer(app).listen(PORT, () => {
