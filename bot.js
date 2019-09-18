@@ -20,8 +20,14 @@ console.log('Authentication successful. Running bot...\r\n')
 
 const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
-	
-app.post('/sms', (req, res) => {
+var router = express.Router()
+
+// a middleware function with no mount path. This code is executed for every request to the router
+router.use(function (req, res, next) {
+  console.log('Time:', Date.now())
+  next()
+})
+app.post('/', (req, res) => {
 	console.log(req);
 	
 	var key = process.env.CONSUMER_SECRET;
