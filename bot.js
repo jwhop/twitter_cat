@@ -31,7 +31,7 @@ router.use(function (req, res, next) {
 
 // a middleware sub-stack shows request info for any type of HTTP request to the /user/:id path
 router.use('/', function (req, res, next) {
-  console.log(req);
+  console.log(req.query.crc_token);
   next()
 }, function (req, res, next) {
   console.log('Request Type:', req.method)
