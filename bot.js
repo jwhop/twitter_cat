@@ -58,7 +58,7 @@ router.use('/', function (req, res, next) {
 // mount the router on the app
 app.use('/', router);
 app.post('/', (req, res) => {
-	//console.log(req);
+	console.log(req);
 	
 	
   
