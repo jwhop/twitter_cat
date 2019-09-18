@@ -2,9 +2,9 @@
   "name": "Belle-the-twitter-cat",
   "version": "1.0.0",
   "description": "Simple Twitter bot",
-  "main": "app.js",
+  "main": "bot.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node bot.js"
   },
   "repository": {
     "type": "git",
