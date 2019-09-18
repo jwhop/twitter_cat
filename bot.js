@@ -28,12 +28,12 @@ app.post('/sms', (req, res) => {
   res.writeHead(200, {'Content-Type': 'text/xml'});
   res.end(twiml.toString());
 });
-
-
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log('Our app is running on port ${ PORT }');
+http.createServer(app).listen(PORT, () => {
+  console.log('Express server listening on port 1337');
 });
+
+
 
 
 var pet_texts_1 = ['You give Belle some chin scratches', 'You scratch Belle behind her ears', 'You pat Belle on her head.', 'You pet Belle along her back.', 'You give Belle belly rubs.'];
