@@ -93,7 +93,7 @@ app.post('/', (req, res) => {
 				});
 		
 		
-		tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer)},1000*60*2);
+		tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer);},1000*60*2);
 			
 			T.post('statuses/update', { status: personalize(lonely_meows[Math.floor(Math.random()*lonely_meows.length)], tg.name)
 					}, function(err, data, response) {
@@ -122,7 +122,7 @@ app.post('/', (req, res) => {
 				});
 		
 		
-		tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer)},1000*60*2);
+		tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer);},1000*60*2);
 			
 			T.post('statuses/update', { status: personalize(lonely_meows[Math.floor(Math.random()*lonely_meows.length)], tg.name)
 					}, function(err, data, response) {
