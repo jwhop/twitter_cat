@@ -67,13 +67,11 @@ var can_tweet_RT = true;
 // mount the router on the app
 app.use('/', router);
 app.post('/', (req, res) => {
-	console.log(String(req.body.tweet_create_events[0].text).substring(0,2));
-	console.log(String(req.body.tweet_create_events[0].text).substring(20,22));
-
+	
 	//is a retweet, starts with B, isn't the main tweet
 	if((req.body.tweet_create_events != null) && 
-	(String(req.body.tweet_create_events[0].text).substr(0,2) == 'RT') &&
-	(String(req.body.tweet_create_events[0].text).substr(20,21) == 'B') &&
+	(String(req.body.tweet_create_events[0].text).substring(0,2) == 'RT') &&
+	(String(req.body.tweet_create_events[0].text).substring(20,21) == 'B') &&
 	(String(req.body.tweet_create_events[0].id_str) != '1174536161060106240') &&
 	can_tweet_RT)
 	{
