@@ -68,10 +68,10 @@ var can_tweet_RT = true;
 app.use('/', router);
 app.post('/', (req, res) => {
 	console.log(req.body.tweet_create_events);
-	
+	//is a retweet, starts with B, isn't the main tweet
 	if((req.body.tweet_create_events != null) && 
 	(String(req.body.tweet_create_events[0].text).substr(0,2) == 'RT') &&
-	(!String(req.body.tweet_create_events[0].text).includes('@')) &&
+	(String(req.body.tweet_create_events[0].text).substr(20,21) == 'B') &&
 	(String(req.body.tweet_create_events[0].id_str) != '1174536161060106240') &&
 	can_tweet_RT)
 	{
@@ -81,45 +81,59 @@ app.post('/', (req, res) => {
 				{
 					console.log("we got a new user!");
 					//console.log(tweet);
-					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, visiting: false, visiting_timer: null});
+					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, can_interact: true, interact_timer: null, visiting_timer: null});
 
 				}
 		
 		var tg = usr_directory[usr_directory.findIndex(find_usr, tweet.user.id_str)];
 		
 		clearTimeout(tg.visiting_timer);
-
-		T.post('statuses/update', { status: personalize(play_meows[Math.floor(Math.random()*play_meows.length)], tweet.user.screen_name)
+		if(tg.can_interact)
+		{
+			T.post('statuses/update', { status: personalize(play_meows[Math.floor(Math.random()*play_meows.length)], tweet.user.screen_name)
 					}, function(err, data, response) {
 				console.log("play reply!")
 				});
-		
+			tg.can_interact = false;
+			interact_timer = setTimeout(function () {tg.can_interact = true; }, 1000*30);
+		}
+		else
+		{
+				console.log("cant interact!");
+		}
 		
 		tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer);},1000*60*60*24);
 			
 	}
-
-	else if(req.body.favorite_events != null && req.body.favorite_events[0])
+	//starts with 'B'
+	else if(req.body.favorite_events != null && 
+	String(req.body.favorite_events[0].text.substr(0,1) == 'B'))
 	{
 		var tweet = req.body.favorite_events[0];
 		if(typeof usr_directory.find(user => user.id === tweet.user.id_str) === 'undefined')
 				{
 					console.log("we got a new user!");
 					//console.log(tweet);
-					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, visiting: false, visiting_timer: null});
+					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1,can_interact: true, interact_timer = null,  visiting_timer: null});
 
 				}
 		
 		var tg = usr_directory[usr_directory.findIndex(find_usr, tweet.user.id_str)];
 		
 		clearTimeout(tg.visiting_timer);
-
-		T.post('statuses/update', { status: personalize(pet_meows[Math.floor(Math.random()*pet_meows.length)], tweet.user.screen_name)
+		if(tg.can_interact)
+		{
+			T.post('statuses/update', { status: personalize(pet_meows[Math.floor(Math.random()*pet_meows.length)], tweet.user.screen_name)
 					}, function(err, data, response) {
 				console.log("pet reply!")
 				});
-		
-		
+			tg.can_interact = false;
+			interact_timer = setTimeout(function () {tg.can_interact = true; }, 1000*30);
+		}
+		else
+		{
+				console.log("cant interact!");
+		}
 		tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer);},1000*60*60*24);
 			
 		
