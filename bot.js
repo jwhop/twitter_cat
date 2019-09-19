@@ -424,7 +424,7 @@ function add_ending(statusmsg)
 //every 20 mins 
 var post_count = 0;
 
-function meow(num)
+function meowstr(num)
 {
 	var rtn_str = ""
 	if(num == 0)
@@ -517,17 +517,22 @@ else
 	var meow = Math.random();
 	if(meow < 0.33)
 	{
-		T.post('statuses/update', { status: meow(0) }, function(err, data, response) {
+		var str = meowstr(0);
+		T.post('statuses/update', { status: str }, function(err, data, response) {
 		console.log("meow!")});
 	}
 	else if (meow < 0.66)
 	{
-		T.post('statuses/update', { status: meow(1) }, function(err, data, response) {
+		var str = meowstr(0);
+
+		T.post('statuses/update', { status: str }, function(err, data, response) {
 		console.log("meow!")});
 	}
 	else
 	{
-		T.post('statuses/update', { status: meow(2) }, function(err, data, response) {
+		var str = meowstr(0);
+
+		T.post('statuses/update', { status: str }, function(err, data, response) {
 		console.log("meow!")});
 	}
 }
