@@ -69,7 +69,39 @@ app.use('/', router);
 app.post('/', (req, res) => {
 	//console.log(req.body.favorite_events);
 
-	console.log(req.body.tweet_create_events[0]);
+	console.log(req.body.tweet_create_events[0].text);
+	if((req.body.tweet_create_events != null) && 
+	(String(req.body.tweet_create_events[0].text).substr(0,2) == 'RT'))
+	{
+		var tweet = req.body.tweet_create_events[0];
+		if(typeof usr_directory.find(user => user.id === tweet.user.id_str) === 'undefined')
+				{
+					console.log("we got a new user!");
+					console.log(tweet);
+					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, visiting: false, visiting_timer: setTimeout(function(){ this.visiting = false; }, 1000*60*60*24)});
+
+				}
+		
+		var tg = usr_directory[usr_directory.findIndex(find_usr, tweet.user.id_str)];
+		
+		clearTimeout(tg.visiting_timer);
+
+		T.post('statuses/update', { status: personalize(play_meows[Math.floor(Math.random()*play_meows.length)], tweet.user.screen_name)
+					}, function(err, data, response) {
+				console.log("play reply!")
+				});
+		
+		
+		tg.visiting_timer = setTimeout(function(){
+			
+			T.post('statuses/update', { status: personalize(lonely_meows[Math.floor(Math.random()*lonely_meows.length)], tg.name)
+					}, function(err, data, response) {
+				console.log("lonely! reply!")
+				});
+		
+		},1000*60*60*24);
+	}
+
 	if(req.body.favorite_events != null)
 	{
 		var tweet = req.body.favorite_events[0];
@@ -359,17 +391,17 @@ var lonely_meows = [' is usually here by now, Belle thought. She is lonely. \n\
               ∧__∧　           \n\
 　　     (  • - • ) (       \n\
        ____ |  ¥  |__)__________________________\n\
-             (_\__/_)                        \n\
+             (_\\__/_)                        \n\
       ——————/————////—————',' ? , Where are they? Belle misses pets. \n\
               ∧__∧　           \n\
 　　     (  • _ • ) (       \n\
        ____ |  ¥  |__)__________________________\n\
-             (_\__/_)                        \n\
+             (_\\__/_)                        \n\
       ——————/————////—————', ' isn\'t home , Belle misses them. \n\
               ∧__∧　           \n\
 　　     (  • o • ) (       \n\
        ____ |  ¥  |__)__________________________\n\
-             (_\__/_)                        \n\
+             (_\\__/_)                        \n\
       ——————/————////—————' ];
 function add_ending(statusmsg)
 {
