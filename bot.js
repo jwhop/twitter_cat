@@ -135,7 +135,7 @@ app.post('/', (req, res) => {
 		},1000*60*60*24);
 		
 	}
-	if(!can_tweet_RT)
+	else if(!can_tweet_RT)
 		can_tweet_RT = !can_tweet_RT;
 	
 });
