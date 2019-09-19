@@ -67,7 +67,7 @@ var can_tweet_RT = true;
 // mount the router on the app
 app.use('/', router);
 app.post('/', (req, res) => {
-	//console.log(req.body.favorite_events);
+	console.log(req.body.favorite_events);
 	
 	if((req.body.tweet_create_events != null) && 
 	(String(req.body.tweet_create_events[0].text).substr(0,2) == 'RT') &&
@@ -97,7 +97,7 @@ app.post('/', (req, res) => {
 			
 	}
 
-	else if(req.body.favorite_events != null)
+	else if(req.body.favorite_events != null && req.body.favorite_events[0])
 	{
 		var tweet = req.body.favorite_events[0];
 		if(typeof usr_directory.find(user => user.id === tweet.user.id_str) === 'undefined')
