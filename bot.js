@@ -93,7 +93,7 @@ app.post('/', (req, res) => {
 				});
 		
 		
-		tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer);},1000*60*2);
+		tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer);},1000*60*60*24);
 			
 	}
 
@@ -118,7 +118,7 @@ app.post('/', (req, res) => {
 				});
 		
 		
-		tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer);},1000*60*2);
+		tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer);},1000*60*60*24);
 			
 		
 	}
@@ -501,7 +501,7 @@ function meowstr(num)
 
 setInterval(function(){ 
 console.log(post_count);
-if(post_count % 12  == 0)
+if(post_count % 3  == 0)
 {
 	console.log("posting pic");
 	T.post('statuses/update', { status: add_ending(idle_meows[Math.floor(Math.random()*idle_meows.length)])}, function(err, data, response) {
@@ -540,7 +540,7 @@ post_count++;
 
 
 
-}, 1000*10);
+}, 1000*60*50);
 
 var stream = T.stream('statuses/filter', { follow: ['1173977167891456005'] });
 
