@@ -67,10 +67,12 @@ var can_tweet_RT = true;
 // mount the router on the app
 app.use('/', router);
 app.post('/', (req, res) => {
-	console.log(req.body.favorite_events);
+	console.log(req.body.tweet_create_events);
 	
 	if((req.body.tweet_create_events != null) && 
 	(String(req.body.tweet_create_events[0].text).substr(0,2) == 'RT') &&
+	(!String(req.body.tweet_create_events[0].text).includes('@')) &&
+	(String(req.body.tweet_create_events[0].id_str) != '1174536161060106240') &&
 	can_tweet_RT)
 	{
 		can_tweet_RT = !can_tweet_RT;
@@ -78,7 +80,7 @@ app.post('/', (req, res) => {
 		if(typeof usr_directory.find(user => user.id === tweet.user.id_str) === 'undefined')
 				{
 					console.log("we got a new user!");
-					console.log(tweet);
+					//console.log(tweet);
 					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, visiting: false, visiting_timer: null});
 
 				}
@@ -103,7 +105,7 @@ app.post('/', (req, res) => {
 		if(typeof usr_directory.find(user => user.id === tweet.user.id_str) === 'undefined')
 				{
 					console.log("we got a new user!");
-					console.log(tweet);
+					//console.log(tweet);
 					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, visiting: false, visiting_timer: null});
 
 				}
@@ -133,7 +135,7 @@ function lonely_time(name, timer)
 					}, function(err, data, response) {
 				console.log("lonely! reply!")
 				});
-	timer = setTimeout(function(){lonely_time(name, timer)},1000*60*2);
+	timer = setTimeout(function(){lonely_time(name, timer)},1000*60*60*24);
 	
 }
 const PORT = process.env.PORT || 3000;
@@ -430,24 +432,28 @@ function meowstr(num)
 	if(num == 0)
 	{
 		num_m = Math.floor(Math.random() * 5);
+		rtn_str += 'm'
 		for(i = 0; i < num_m; i++)
 		{
 			rtn_str += 'm'
 		}
 		
 		num_e = Math.floor(Math.random() * 5);
+		rtn_str += 'e'
 		for(i = 0; i < num_e; i++)
 		{
 			rtn_str += 'e'
 		}
 		
 		num_o = Math.floor(Math.random() * 5);
+		rtn_str += 'o'
 		for(i = 0; i < num_o; i++)
 		{
 			rtn_str += 'o'
 		}
 		
 		num_w = Math.floor(Math.random() * 5);
+		rtn_str += 'w'
 		for(i = 0; i < num_w; i++)
 		{
 			rtn_str += 'w'
@@ -456,24 +462,28 @@ function meowstr(num)
 	else if (num ==1)
 	{
 		num_m = Math.floor(Math.random() * 5);
+		rtn_str += 'm'
 		for(i = 0; i < num_m; i++)
 		{
 			rtn_str += 'm'
 		}
 		
 		num_r = Math.floor(Math.random() * 5);
+		rtn_str += 'r'
 		for(i = 0; i < num_e; i++)
 		{
 			rtn_str += 'r'
 		}
 		
 		num_o = Math.floor(Math.random() * 5);
+		rtn_str += 'o'
 		for(i = 0; i < num_o; i++)
 		{
 			rtn_str += 'o'
 		}
 		
 		num_w = Math.floor(Math.random() * 5);
+		rtn_str += 'w'
 		for(i = 0; i < num_w; i++)
 		{
 			rtn_str += 'w'
@@ -482,6 +492,7 @@ function meowstr(num)
 	else
 	{
 		num_p = Math.floor(Math.random() * 10);
+		rtn_str += 'p'
 		for(i = 0; i < num_p; i++)
 		{
 			rtn_str += 'p'
@@ -489,6 +500,7 @@ function meowstr(num)
 		
 		
 		num_r = Math.floor(Math.random() * 10);
+		rtn_str += 'r'
 		for(i = 0; i < num_r; i++)
 		{
 			rtn_str += 'r'
