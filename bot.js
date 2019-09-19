@@ -93,14 +93,12 @@ app.post('/', (req, res) => {
 				});
 		
 		
-		tg.visiting_timer = setTimeout(function(){
+		tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer)},1000*60*2);
 			
 			T.post('statuses/update', { status: personalize(lonely_meows[Math.floor(Math.random()*lonely_meows.length)], tg.name)
 					}, function(err, data, response) {
 				console.log("lonely! reply!")
 				});
-		
-		},1000*60*2);
 	}
 
 	else if(req.body.favorite_events != null)
@@ -124,21 +122,30 @@ app.post('/', (req, res) => {
 				});
 		
 		
-		tg.visiting_timer = setTimeout(function(){
+		tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer)},1000*60*2);
 			
 			T.post('statuses/update', { status: personalize(lonely_meows[Math.floor(Math.random()*lonely_meows.length)], tg.name)
 					}, function(err, data, response) {
 				console.log("lonely! reply!")
 				});
 		
-		},1000*60*60*24);
+		
 		
 	}
 	else if(!can_tweet_RT)
 		can_tweet_RT = !can_tweet_RT;
 	
+	res.send("");
 });
-
+function lonely_time(name, timer)
+{
+	T.post('statuses/update', { status: personalize(lonely_meows[Math.floor(Math.random()*lonely_meows.length)], name)
+					}, function(err, data, response) {
+				console.log("lonely! reply!")
+				});
+	timer = setTimeout(function(){lonely_time(name, timer)},1000*60*2);
+	
+}
 const PORT = process.env.PORT || 3000;
 http.createServer(app).listen(PORT, () => {
   console.log('Express server listening on port' + PORT);
@@ -310,47 +317,47 @@ var play_meows = [' grabs a toy mouse and tossses it.\n\
               )    ( •.•)   as she leaps towards it\n\
               ~(___¥)                   _^^_\n\
                  u    u              ~~/__•.•\\\n\
-      —/———/—————/————/—/',' grabs a toy mouse and tossses it.\n\
+      —/———/—————/————/',' grabs a toy mouse and tossses it.\n\
                     ∧_∧   Belle tenses and  \n\
               )    ( •.•)   gets ready to strike\n\
               ~(___¥)                   _^^_\n\
                  u    u              ~~/__•.•\\\n\
-      —/———/—————/————/—/',' grabs a toy mouse and tossses it.\n\
+      —/———/—————/————/',' grabs a toy mouse and tossses it.\n\
                     ∧_∧   Belle pauses,  \n\
               )    ( •.•)   then scratches at it.\n\
               ~(___¥)                   _^^_\n\
                  u    u              ~~/__•.•\\\n\
-      —/———/—————/————/—/', ' scratches at the ground. \n\
+      —/———/—————/————/', ' scratches at the ground. \n\
                     ∧_∧   Belle\'s pupils widen \n\
               )    ( •.•)   as she leaps \n\
               ~(___¥)    towards it.           \n\
                  u    u    \n\
-      —/———/—————/————/—/	 ',' scratches at the ground. \n\
+      —/———/—————/————/	 ',' scratches at the ground. \n\
                     ∧_∧   Belle tenses  \n\
               )    ( •.•)   and gets ready \n\
               ~(___¥)    to strike.           \n\
                  u    u    \n\
-      —/———/—————/————/—/	 ',' scratches at the ground. \n\
+      —/———/—————/————/	 ',' scratches at the ground. \n\
                     ∧_∧   Belle pauses, \n\
               )    ( •.•)   then scratches  \n\
               ~(___¥)    at it.           \n\
                  u    u    \n\
-      —/———/—————/————/—/	 ', ' points a laser on the floor in Belle\'s direction. \n\
+      —/———/—————/————/	 ', ' points a laser on the floor in Belle\'s direction. \n\
                     ∧_∧   Belle\'s pupils widen \n\
               )    ( •.•)   as she leaps \n\
               ~(___¥)    towards it.           \n\
                  u    u    \n\
-      —/———/—————/————/—/	 ', ' points a laser on the floor in Belle\'s direction. \n\
+      —/———/—————/————/	 ', ' points a laser on the floor in Belle\'s direction. \n\
                     ∧_∧   Belle pupils widen \n\
               )    ( •.•)   as she leaps \n\
               ~(___¥)    towards it.           \n\
                  u    u    \n\
-      —/———/—————/————/—/	 ', ' points a laser on the floor in Belle\'s direction. \n\
+      —/———/—————/————/	 ', ' points a laser on the floor in Belle\'s direction. \n\
                     ∧_∧   Belle pupils widen \n\
               )    ( •.•)   as she leaps \n\
               ~(___¥)    towards it.           \n\
                  u    u    \n\
-      —/———/—————/————/—/	 ' ];
+      —/———/—————/————/	 ' ];
 
 
 var idle_meows = ['Belle is bored.\n\
@@ -393,19 +400,19 @@ ____________\\___________________ \\________________   \n\
 var lonely_meows = [' is usually here by now, Belle thought. She is lonely. \n\
               ∧__∧　           \n\
 　　     (  • - • ) (       \n\
-       ____ |  ¥  |__)__________________________\n\
+       ____ |  ¥  |__)________________\n\
              (_\\__/_)                        \n\
-      ——————/————////—————',' ? , Where are they? Belle misses pets. \n\
+      ——————/————/_/—',' ? , Where are they? Belle misses pets. \n\
               ∧__∧　           \n\
 　　     (  • _ • ) (       \n\
-       ____ |  ¥  |__)__________________________\n\
+       ____ |  ¥  |__)________________\n\
              (_\\__/_)                        \n\
-      ——————/————////—————', ' isn\'t home , Belle misses them. \n\
+      ——————/————/_/—', ' isn\'t home , Belle misses them. \n\
               ∧__∧　           \n\
 　　     (  • o • ) (       \n\
-       ____ |  ¥  |__)__________________________\n\
+       ____ |  ¥  |__)_________________\n\
              (_\\__/_)                        \n\
-      ——————/————////—————' ];
+      ——————/————/_/—' ];
 function add_ending(statusmsg)
 {
 	for(i = 0; i < 20; i++)
