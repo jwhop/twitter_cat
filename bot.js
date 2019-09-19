@@ -67,7 +67,7 @@ var can_tweet_RT = true;
 // mount the router on the app
 app.use('/', router);
 app.post('/', (req, res) => {
-	console.log(req.body.favorite_events);
+	//console.log(req.body.favorite_events);
 	//is a retweet, starts with B, isn't the main tweet
 	if((req.body.tweet_create_events != null) && 
 	(String(req.body.tweet_create_events[0].text).substr(0,2) == 'RT') &&
@@ -107,7 +107,7 @@ app.post('/', (req, res) => {
 	}
 	//starts with 'B'
 	else if(req.body.favorite_events != null && 
-	String(req.body.favorite_events[0].text.substr(0,1) == 'B'))
+	String(req.body.favorite_events[0].favorited_status.text).substr(0,1) == 'B')
 	{
 		var tweet = req.body.favorite_events[0];
 		if(typeof usr_directory.find(user => user.id === tweet.user.id_str) === 'undefined')
