@@ -418,30 +418,112 @@ function add_ending(statusmsg)
 //every 20 mins 
 var post_count = 0;
 setInterval(function(){ 
+
 if(post_count % 12  == 0)
 {
 	T.post('statuses/update', { status: add_ending(idle_meows[Math.floor(Math.random()*idle_meows.length)])}, function(err, data, response) {
 				console.log("posted tweet!")
 				});
 				
-	var rnd = Math.floor(Math.random() * 100);
-	var rnd_ind = 0;
-	var stream = T.stream('statuses/filter', { track: 'cat' })
 	
-	stream.on('tweet', function (tweet) {
-	if(rnd_ind == rnd)
-	{
-		T.post('favorites/create', { id: tweet.id_str });
-	}
-	rnd_ind++;
-	});
 }
+else
+{
+	var meow = Math.random();
+	if(meow < 0.33)
+	{
+		T.post('statuses/update', { status:meow(0) }, function(err, data, response) {
+		console.log("meow!")});
+	}
+	else if (meow < 0.66)
+	{
+		T.post('statuses/update', { status:meow(1) }, function(err, data, response) {
+		console.log("meow!")});
+	}
+	else
+	{
+		T.post('statuses/update', { status:meow(2) }, function(err, data, response) {
+		console.log("meow!")});
+	}
+}
+post_count++;
 
-post_count ++;
 
 
 }, 1000*60*2);
-
+function meow(num)
+{
+	var rtn_str = ""
+	if(num == 0)
+	{
+		num_m = Math.floor(Math.random() * 5);
+		for(i = 0; i < num_m; i++)
+		{
+			rtn_str += 'm'
+		}
+		
+		num_e = Math.floor(Math.random() * 5);
+		for(i = 0; i < num_e; i++)
+		{
+			rtn_str += 'e'
+		}
+		
+		num_o = Math.floor(Math.random() * 5);
+		for(i = 0; i < num_o; i++)
+		{
+			rtn_str += 'o'
+		}
+		
+		num_w = Math.floor(Math.random() * 5);
+		for(i = 0; i < num_w; i++)
+		{
+			rtn_str += 'w'
+		}
+	}
+	else if (num ==1)
+	{
+		num_m = Math.floor(Math.random() * 5);
+		for(i = 0; i < num_m; i++)
+		{
+			rtn_str += 'm'
+		}
+		
+		num_r = Math.floor(Math.random() * 5);
+		for(i = 0; i < num_e; i++)
+		{
+			rtn_str += 'r'
+		}
+		
+		num_o = Math.floor(Math.random() * 5);
+		for(i = 0; i < num_o; i++)
+		{
+			rtn_str += 'o'
+		}
+		
+		num_w = Math.floor(Math.random() * 5);
+		for(i = 0; i < num_w; i++)
+		{
+			rtn_str += 'w'
+		}
+	}
+	else
+	{
+		num_p = Math.floor(Math.random() * 10);
+		for(i = 0; i < num_p; i++)
+		{
+			rtn_str += 'p'
+		}
+		
+		
+		num_r = Math.floor(Math.random() * 10);
+		for(i = 0; i < num_r; i++)
+		{
+			rtn_str += 'r'
+		}
+		
+	}
+	
+}
 var stream = T.stream('statuses/filter', { follow: ['1173977167891456005'] });
 
 function find_usr(currentValue, index, array)
