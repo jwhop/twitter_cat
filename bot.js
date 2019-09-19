@@ -69,7 +69,7 @@ app.use('/', router);
 app.post('/', (req, res) => {
 	console.log(req.body.tweet_create_events);
 	//is a retweet, starts with B, isn't the main tweet
-	if((req.body.tweet_create_events != null) && 
+	if((req.body.tweet_create_events != undefined) && 
 	(String(req.body.tweet_create_events[0].text).substr(0,2) == 'RT') &&
 	(String(req.body.tweet_create_events[0].text).substr(20,21) == 'B') &&
 	(String(req.body.tweet_create_events[0].id_str) != '1174536161060106240') &&
