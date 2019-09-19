@@ -69,7 +69,7 @@ app.use('/', router);
 app.post('/', (req, res) => {
 	//console.log(req.body.favorite_events);
 
-	console.log(req.body.tweet_create_events[0]);
+	console.log(req.body);
 	if(req.body.favorite_events != null)
 	{
 		var tweet = req.body.favorite_events[0];
