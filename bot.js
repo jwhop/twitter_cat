@@ -63,7 +63,7 @@ function personalize(str, usr)
 	return string;
 	
 }
-
+var prev_tweet = {};
 // mount the router on the app
 app.use('/', router);
 app.post('/', (req, res) => {
@@ -71,7 +71,8 @@ app.post('/', (req, res) => {
 
 	console.log(req.body.tweet_create_events[0].text);
 	if((req.body.tweet_create_events != null) && 
-	(String(req.body.tweet_create_events[0].text).substr(0,2) == 'RT'))
+	(String(req.body.tweet_create_events[0].text).substr(0,2) == 'RT') &&
+	req.body.tweet_create_events[0] != prev_tweet)
 	{
 		var tweet = req.body.tweet_create_events[0];
 		if(typeof usr_directory.find(user => user.id === tweet.user.id_str) === 'undefined')
@@ -81,7 +82,7 @@ app.post('/', (req, res) => {
 					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, visiting: false, visiting_timer: setTimeout(function(){ this.visiting = false; }, 1000*60*60*24)});
 
 				}
-		
+		prev_tweet = tweet;
 		var tg = usr_directory[usr_directory.findIndex(find_usr, tweet.user.id_str)];
 		
 		clearTimeout(tg.visiting_timer);
