@@ -418,7 +418,7 @@ function add_ending(statusmsg)
 //every 20 mins 
 var post_count = 0;
 setInterval(function(){ 
-Console.log(post_count);
+console.log(post_count);
 if(post_count % 12  == 0)
 {
 	console.log("posting pic");
@@ -453,7 +453,7 @@ post_count++;
 
 
 
-}, 1000*60*2);
+}, 1000*30);
 function meow(num)
 {
 	var rtn_str = ""
