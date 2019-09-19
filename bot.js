@@ -381,7 +381,7 @@ var idle_meows = ['Belle is bored.\n\
 	  \\V \\_\
 	  )_______________________             \n\    \
                     ,(___)            \n\      ', 'Belle is catching rays.\n\
-____________\\___________________ \\________________   \n\
+____________\\___________________ \\_____   \n\
                   \\           _____  ∧__∧ \\\n\
                        \\    _/|  ___ ﾉ _^.^ ﾉ \\\n\
                          \\___/_   \\_,\\_,\\_,\\_,__\\\n\
@@ -418,9 +418,10 @@ function add_ending(statusmsg)
 //every 20 mins 
 var post_count = 0;
 setInterval(function(){ 
-
+Console.log(post_count);
 if(post_count % 12  == 0)
 {
+	console.log("posting pic");
 	T.post('statuses/update', { status: add_ending(idle_meows[Math.floor(Math.random()*idle_meows.length)])}, function(err, data, response) {
 				console.log("posted tweet!")
 				});
@@ -429,6 +430,8 @@ if(post_count % 12  == 0)
 }
 else
 {
+	console.log("posting text");
+
 	var meow = Math.random();
 	if(meow < 0.33)
 	{
