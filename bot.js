@@ -416,7 +416,7 @@ function add_ending(statusmsg)
 	return statusmsg;
 }
 //every 20 mins 
-int post_count = 0;
+var post_count = 0;
 setInterval(function(){ 
 if(post_count % 12  == 0)
 {
@@ -424,8 +424,8 @@ if(post_count % 12  == 0)
 				console.log("posted tweet!")
 				});
 				
-	int rnd = Math.floor(Math.random() * 100);
-	int rnd_ind = 0;
+	var rnd = Math.floor(Math.random() * 100);
+	var rnd_ind = 0;
 	var stream = T.stream('statuses/filter', { track: 'cat' })
 	
 	stream.on('tweet', function (tweet) {
