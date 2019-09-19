@@ -68,8 +68,7 @@ var can_tweet_RT = true;
 app.use('/', router);
 app.post('/', (req, res) => {
 	//console.log(req.body.favorite_events);
-
-	console.log(req.body.tweet_create_events[0].text);
+	
 	if((req.body.tweet_create_events != null) && 
 	(String(req.body.tweet_create_events[0].text).substr(0,2) == 'RT') &&
 	can_tweet_RT)
@@ -80,7 +79,7 @@ app.post('/', (req, res) => {
 				{
 					console.log("we got a new user!");
 					console.log(tweet);
-					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, visiting: false, visiting_timer: setTimeout(function(){ this.visiting = false; }, 1000*60*60*24)});
+					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, visiting: false, visiting_timer: setTimeout(function(){ this.visiting = false; }, 1000*60*2)});
 
 				}
 		
@@ -101,7 +100,7 @@ app.post('/', (req, res) => {
 				console.log("lonely! reply!")
 				});
 		
-		},1000*60*60*24);
+		},1000*60*2);
 	}
 
 	else if(req.body.favorite_events != null)
