@@ -67,7 +67,9 @@ var can_tweet_RT = true;
 // mount the router on the app
 app.use('/', router);
 app.post('/', (req, res) => {
-	//console.log(req.body.favorite_events);
+	console.log(String(req.body.tweet_create_events[0].text).substr(0,2)));
+	console.log(String(req.body.tweet_create_events[0].text).substr(20,21)));
+
 	//is a retweet, starts with B, isn't the main tweet
 	if((req.body.tweet_create_events != null) && 
 	(String(req.body.tweet_create_events[0].text).substr(0,2) == 'RT') &&
@@ -75,6 +77,7 @@ app.post('/', (req, res) => {
 	(String(req.body.tweet_create_events[0].id_str) != '1174536161060106240') &&
 	can_tweet_RT)
 	{
+		console.log("rting");
 		can_tweet_RT = !can_tweet_RT;
 		var tweet = req.body.tweet_create_events[0];
 		if(typeof usr_directory.find(user => user.id === tweet.user.id_str) === 'undefined')
@@ -95,7 +98,7 @@ app.post('/', (req, res) => {
 				console.log("play reply!")
 				});
 			tg.can_interact = false;
-			interact_timer = setTimeout(function () {tg.can_interact = true; }, 1000*30);
+			interact_timer = setTimeout(function () {tg.can_interact = true; }, 1000*60*30);
 		}
 		else
 		{
@@ -128,7 +131,7 @@ app.post('/', (req, res) => {
 				console.log("pet reply!")
 				});
 			tg.can_interact = false;
-			interact_timer = setTimeout(function () {tg.can_interact = true; }, 1000*30);
+			interact_timer = setTimeout(function () {tg.can_interact = true; }, 1000*60*30);
 		}
 		else
 		{
