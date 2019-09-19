@@ -79,7 +79,7 @@ app.post('/', (req, res) => {
 				{
 					console.log("we got a new user!");
 					console.log(tweet);
-					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, visiting: false, visiting_timer: setTimeout(function(){ this.visiting = false; }, 1000*60*2)});
+					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, visiting: false, visiting_timer: null});
 
 				}
 		
@@ -95,10 +95,6 @@ app.post('/', (req, res) => {
 		
 		tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer);},1000*60*2);
 			
-			T.post('statuses/update', { status: personalize(lonely_meows[Math.floor(Math.random()*lonely_meows.length)], tg.name)
-					}, function(err, data, response) {
-				console.log("lonely! reply!")
-				});
 	}
 
 	else if(req.body.favorite_events != null)
@@ -108,7 +104,7 @@ app.post('/', (req, res) => {
 				{
 					console.log("we got a new user!");
 					console.log(tweet);
-					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, visiting: false, visiting_timer: setTimeout(function(){ this.visiting = false; }, 1000*60*60*24)});
+					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, visiting: false, visiting_timer: null});
 
 				}
 		
@@ -124,12 +120,6 @@ app.post('/', (req, res) => {
 		
 		tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer);},1000*60*2);
 			
-			T.post('statuses/update', { status: personalize(lonely_meows[Math.floor(Math.random()*lonely_meows.length)], tg.name)
-					}, function(err, data, response) {
-				console.log("lonely! reply!")
-				});
-		
-		
 		
 	}
 	else if(!can_tweet_RT)
