@@ -417,43 +417,7 @@ function add_ending(statusmsg)
 }
 //every 20 mins 
 var post_count = 0;
-setInterval(function(){ 
-console.log(post_count);
-if(post_count % 12  == 0)
-{
-	console.log("posting pic");
-	T.post('statuses/update', { status: add_ending(idle_meows[Math.floor(Math.random()*idle_meows.length)])}, function(err, data, response) {
-				console.log("posted tweet!")
-				});
-				
-	
-}
-else
-{
-	console.log("posting text");
 
-	var meow = Math.random();
-	if(meow < 0.33)
-	{
-		T.post('statuses/update', { status:meow(0) }, function(err, data, response) {
-		console.log("meow!")});
-	}
-	else if (meow < 0.66)
-	{
-		T.post('statuses/update', { status:meow(1) }, function(err, data, response) {
-		console.log("meow!")});
-	}
-	else
-	{
-		T.post('statuses/update', { status:meow(2) }, function(err, data, response) {
-		console.log("meow!")});
-	}
-}
-post_count++;
-
-
-
-}, 1000*30);
 function meow(num)
 {
 	var rtn_str = ""
@@ -527,6 +491,46 @@ function meow(num)
 	}
 	
 }
+
+
+setInterval(function(){ 
+console.log(post_count);
+if(post_count % 12  == 0)
+{
+	console.log("posting pic");
+	T.post('statuses/update', { status: add_ending(idle_meows[Math.floor(Math.random()*idle_meows.length)])}, function(err, data, response) {
+				console.log("posted tweet!")
+				});
+				
+	
+}
+else
+{
+	console.log("posting text");
+
+	var meow = Math.random();
+	if(meow < 0.33)
+	{
+		T.post('statuses/update', { status: meow(0) }, function(err, data, response) {
+		console.log("meow!")});
+	}
+	else if (meow < 0.66)
+	{
+		T.post('statuses/update', { status: meow(1) }, function(err, data, response) {
+		console.log("meow!")});
+	}
+	else
+	{
+		T.post('statuses/update', { status: meow(2) }, function(err, data, response) {
+		console.log("meow!")});
+	}
+}
+post_count++;
+
+
+
+}, 1000*10);
+
 var stream = T.stream('statuses/filter', { follow: ['1173977167891456005'] });
 
 function find_usr(currentValue, index, array)
