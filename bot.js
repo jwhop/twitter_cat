@@ -535,7 +535,7 @@ console.log(post_count);
 				
 	console.log("posting text");
 
-	var meow = Math.random();
+	/* var meow = Math.random();
 	if(meow < 0.33)
 	{
 		var str = meowstr(0);
@@ -557,9 +557,9 @@ console.log(post_count);
 		console.log("meow!")});
 	}
 
+*\
 
-
-}, 1000*60*60);
+}, 1000*60*180);
 
 var stream = T.stream('statuses/filter', { follow: ['1173977167891456005'] });
 
