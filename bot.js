@@ -559,7 +559,7 @@ console.log(post_count);
 
 
 
-}, 1000*30);
+}, 1000*60*30);
 
 var stream = T.stream('statuses/filter', { follow: ['1173977167891456005'] });
 
