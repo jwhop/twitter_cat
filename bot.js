@@ -528,17 +528,11 @@ function meowstr(num)
 
 setInterval(function(){ 
 console.log(post_count);
-if(post_count % 3  == 0)
-{
 	console.log("posting pic");
 	T.post('statuses/update', { status: add_ending(idle_meows[Math.floor(Math.random()*idle_meows.length)])}, function(err, data, response) {
 				console.log("posted tweet!")
 				});
 				
-	
-}
-else
-{
 	console.log("posting text");
 
 	var meow = Math.random();
@@ -562,12 +556,10 @@ else
 		T.post('statuses/update', { status: str }, function(err, data, response) {
 		console.log("meow!")});
 	}
-}
-post_count++;
 
 
 
-}, 1000*60*50);
+}, 1000*30);
 
 var stream = T.stream('statuses/filter', { follow: ['1173977167891456005'] });
 
