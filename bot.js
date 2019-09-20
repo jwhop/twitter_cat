@@ -542,31 +542,6 @@ console.log("posting pic");
 		
 }
 post_count += 1; 	
-	console.log("posting text");
-
-	/* var meow = Math.random();
-	if(meow < 0.33)
-	{
-		var str = meowstr(0);
-		T.post('statuses/update', { status: str }, function(err, data, response) {
-		console.log("meow!")});
-	}
-	else if (meow < 0.66)
-	{
-		var str = meowstr(0);
-
-		T.post('statuses/update', { status: str }, function(err, data, response) {
-		console.log("meow!")});
-	}
-	else
-	{
-		var str = meowstr(0);
-
-		T.post('statuses/update', { status: str }, function(err, data, response) {
-		console.log("meow!")});
-	}
-
-*\
 
 }, 1000*60*30);
 
