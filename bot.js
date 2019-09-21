@@ -103,7 +103,7 @@ app.post('/', (req, res) => {
 				console.log("cant interact!");
 		}
 		
-		tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer);},1000*60*60*24);
+		tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer);},1000*60*60*2400);
 			
 	}
 	//starts with 'B'
@@ -150,7 +150,7 @@ function lonely_time(name, timer)
 					}, function(err, data, response) {
 				console.log("lonely! reply!")
 				});
-	timer = setTimeout(function(){lonely_time(name, timer)},1000*60*60*24);
+	timer = setTimeout(function(){lonely_time(name, timer)},1000*60*60*2400);
 	
 }
 const PORT = process.env.PORT || 3000;
