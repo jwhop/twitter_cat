@@ -531,7 +531,7 @@ setInterval(function(){
 console.log(post_count);
 if(post_count != 6)
 {
-console.log(‘the bot is still active!!’);
+console.log(post_count);
 post_count += 1; 
 var stream = T.stream('statuses/filter', { track: ['cat'] });
 }
