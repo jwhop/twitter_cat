@@ -146,12 +146,12 @@ app.post('/', (req, res) => {
 });
 function lonely_time(name, timer)
 {
-	T.post('statuses/update', { status: personalize(lonely_meows[Math.floor(Math.random()*lonely_meows.length)], name)
+	/* T.post('statuses/update', { status: personalize(lonely_meows[Math.floor(Math.random()*lonely_meows.length)], name)
 					}, function(err, data, response) {
 				console.log("lonely! reply!")
 				});
 	timer = setTimeout(function(){lonely_time(name, timer)},1000*60*60*2400);
-	
+	*/
 }
 const PORT = process.env.PORT || 3000;
 http.createServer(app).listen(PORT, () => {
