@@ -440,7 +440,7 @@ function add_ending(statusmsg)
 	return statusmsg;
 }
 //every 20 mins 
-var post_count = 6;
+var post_count = 0;
 
 function meowstr(num)
 {
@@ -531,6 +531,7 @@ setInterval(function(){
 console.log(post_count);
 if(post_count != 6)
 {
+Console.log(“the bot is still active!!”);
 post_count += 1; 
 var stream = T.stream('statuses/filter', { track: ['cat'] });
 }
