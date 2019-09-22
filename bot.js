@@ -146,12 +146,11 @@ app.post('/', (req, res) => {
 });
 function lonely_time(name, timer)
 {
-	/*T.post('statuses/update', { status: personalize(lonely_meows[Math.floor(Math.random()*lonely_meows.length)], name)
+	T.post('statuses/update', { status: personalize(lonely_meows[Math.floor(Math.random()*lonely_meows.length)], name)
 					}, function(err, data, response) {
 				console.log("lonely! reply!")
 				});
 	timer = setTimeout(function(){lonely_time(name, timer)},1000*60*60*2400);
-        */
 	
 }
 const PORT = process.env.PORT || 3000;
@@ -529,21 +528,20 @@ function meowstr(num)
 
 setInterval(function(){ 
 console.log(post_count);
-if(post_count != 6)
+if(post_count % 6 != 0)
 {
-console.log(post_count);
-post_count += 1; 
 var stream = T.stream('statuses/filter', { track: ['cat'] });
 }
 else
 {
-post_count = 0;
+
 console.log("posting pic");
 	T.post('statuses/update', { status: add_ending(idle_meows[Math.floor(Math.random()*idle_meows.length)])}, function(err, data, response) {
 				console.log("posted tweet!")
 				});
 		
-}	
+}
+post_count += 1; 	
 
 }, 1000*60*30);
 
