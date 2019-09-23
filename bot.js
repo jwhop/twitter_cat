@@ -36,22 +36,22 @@ router.use('/', function (req, res, next) {
 	
 	if(req.query.crc_token != null)
 	{
-	console.log(req.query.crc_token);
+	
 	
 	
 	hmac = crypto.createHmac('sha256', process.env.CONSUMER_SECRET).update(req.query.crc_token).digest('base64')
 
 	var txt = '{ "response_token": ' + '"sha256='+String(hmac) + '"}';
-	console.log(txt);
+	
 	var obj = JSON.parse(txt);
-	console.log(obj);
+	
 	res.send(obj);
 	}
   next()
 }, 
   
   function (req, res, next) {
-  console.log('Request Type:', req.method)
+  
   next()
 });
 
@@ -355,14 +355,14 @@ var play_meows = [' grabs a toy mouse and tossses it.\n\
               ~(___¥)    towards it.           \n\
                  u    u    \n\
       —/———/—————/————/	 ', ' points a laser on the floor in Belle\'s direction. \n\
-                    ∧_∧   Belle pupils widen \n\
-              )    ( •.•)   as she leaps \n\
-              ~(___¥)    towards it.           \n\
+                    ∧_∧   Belle pauses, \n\
+              )    ( •.•)   then scratches at it \n\
+              ~(___¥)               \n\
                  u    u    \n\
       —/———/—————/————/	 ', ' points a laser on the floor in Belle\'s direction. \n\
-                    ∧_∧   Belle pupils widen \n\
-              )    ( •.•)   as she leaps \n\
-              ~(___¥)    towards it.           \n\
+                    ∧_∧   Belle tenses and \n\
+              )    ( •.•)   gets ready to \n\
+              ~(___¥)    strike.           \n\
                  u    u    \n\
       —/———/—————/————/	 ' ];
 
@@ -408,7 +408,154 @@ ____________\\___________________ \\_____   \n\
   _ ︵(  • . • )︵__________________\n\
      |_ |   V   | _|\n\
      |_ \\_____/_ |\n\
-_____________________________\n'];
+_____________________________\n', 'Belle found a box.\n\
+               ∧__∧　           \n\
+　　     (  • w • )             \n\
+          \\_u__u__//\n\
+          |              |       \n\
+          |_________|        \n\
+      ——————/———\n', 'Belle scratches her post.\n\
+               ∧__∧　      ___   \n\
+　　     (  ^ . ^ )     (     )      \n\
+       __(   /      | //__ | `  |_____   \n\
+            (_____|     /_ |  ` |_ \\n\
+      —————/__________\\\n', 'Belle is rolling around in someone\'s shoes.\n\
+(                                                 \n\
+) __n\'____n\'______\n\
+ \\__________/( • m • )    \n\
+       (__X_||)  V—V\n\
+                 \n', 'Belle is staring out of the window.\n\
+  __________        ∧__∧              \n\
+/       |        /     ( • . • )  ______\n\
+/____ |_____/           \\________/ \  \n\
+/       |        / _______u    u___  _/__________\\\n\
+/_____|____ /_______________________________\\\n', 'Belle is staring out of the window.\n\
+  __________        ∧__∧              \n\
+/       |        /     ( • . • ) \n\
+/____ |_____/       |   Y  \\  \n\
+/       |        / ___ |______)____\\______\n\
+/_____|____ /_____________________\n', 'Belle found the top of the fridge.\n\
+            ∧__∧\n\
+   __︵(  • . • )︵___\n\
+  /   |_ |   V   | _|     / \n\
+ /__|_ \\_____/_ |___/|\n\
+|                     |    |  |\n\
+|____________ | __| /|\n\
+|                     |    |  |\n\
+|                     |    |  |\n\
+|____________ |__ | /', 'Belle found her way onto the dining room table.\n\
+              ∧__∧              \n\
+            ( • . • )   (\n\
+             |   Y  \\  (\n\
+        ___ |______)__________\n\
+       | ============|\n\
+       |____________________|\n\
+       ||                             ||', 'Belle found the wifi router and is stealing its warmth.\n\
+            ∧__∧\n\
+      ︵( • w •)︵\n\
+   / |_ |   V   | _| \  _________________\n\
+ /_ |_ \\_____/_ |_\\\n\
+|   : o [        ]  o: |\n\
+|________________| ________________\n', 'Belle is spying down a bug.\n\
+                    ∧_∧   \n\
+              )    ( o.o)             \'.\'\n\
+              ~(___¥)                \n\
+                 u    u              \n\
+      —/———/—————/————/\n', 'Belle is bored.\n\
+\n\
+             ∧__∧　            ============\n\
+　　    (  o w o ) (         || PLAY WITH ME ||\n\
+       ____ |  ¥  |__)______ ============_\n\
+             (_\\__/_)                        ||\n\      ', 'Belle is staring off into space.\n\
+\n\
+              ∧__∧　           \n\
+　　     (  • - • ) (       \n\
+       ____ |  ¥  |__)__________________________\n\
+             (_\\__/_)                        \n\      ', 'Belle is chasing some dust.\n\
+                   ∧__∧　           \n\
+　　          (  • ᴥ • )        \n\
+            (    |  V  |  --                .\n\
+             ) (_____)   -\n\
+               //    //                  \n\      ', 'Belle is playing with some string.\n\
+             |   ∧_∧\n\
+             (  (•.• )  (\n\
+      ____ ) `` \\V \\_)_______________________                  \n\
+                  ,(___)            \n\      ', 'Belle is eating some food. \n\
+                                  ∧_∧\n\
+                          )___( ᵔ w ᵔ )\n\
+     _____________ (____&)__,.,.,.,.  ___________     \n\
+                           u    u   /_____\\\n\      ', 'Belle is playing with a rubber band.\n\
+                 ∧_∧\n\
+               ( •.• )  (\n\
+      _____\'\
+	  0\'\
+	  \\V \\_\
+	  )_______________________             \n\    \
+                    ,(___)            \n\      ', 'Belle is catching rays.\n\
+____________\\___________________ \\_____   \n\
+                  \\           _____  ∧__∧ \\\n\
+                       \\    _/|  ___ ﾉ _^_^ ﾉ \\\n\
+                         \\___/_   \\_,\\_,\\_,\\_,__\\\n\
+', 'Belle is lounging.\n\
+\n\
+         ∧__∧\n\
+  _ ︵(  • w • )︵__________________\n\
+     |_ |   V   | _|\n\
+     |_ \\_____/_ |\n\
+_____________________________\n', 'Belle found a box.\n\
+               ∧__∧　           \n\
+　　     (  • . • )             \n\
+          \\_u__u__//\n\
+          |              |       \n\
+          |_________|        \n\
+      ——————/———\n', 'Belle scratches her post.\n\
+               ∧__∧　      ___   \n\
+　　     (  o w o )     (     )      \n\
+       __(   /      | //__ | `  |_____   \n\
+            (_____|     /_ |  ` |_ \\n\
+      —————/__________\\\n', 'Belle is rolling around in someone\'s shoes.\n\
+(                                                 \n\
+) __n\'____n\'______\n\
+ \\__________/( • m • )    \n\
+       (__X_||)  V—V\n\
+                 \n', 'Belle is staring out of the window.\n\
+  __________        ∧__∧              \n\
+/       |        /     ( ^__^ )  ______\n\
+/____ |_____/           \\________/ \  \n\
+/       |        / _______u    u___  _/__________\\\n\
+/_____|____ /_______________________________\\\n', 'Belle is staring out of the window.\n\
+  __________        ∧__∧              \n\
+/       |        /     ( ^__^ ) \n\
+/____ |_____/       |   Y  \\  \n\
+/       |        / ___ |______)____\\______\n\
+/_____|____ /_____________________\n', 'Belle found the top of the fridge.\n\
+            ∧__∧\n\
+   __︵(  • w • )︵___\n\
+  /   |_ |   V   | _|     / \n\
+ /__|_ \\_____/_ |___/|\n\
+|                     |    |  |\n\
+|____________ | __| /|\n\
+|                     |    |  |\n\
+|                     |    |  |\n\
+|____________ |__ | /', 'Belle found her way onto the dining room table.\n\
+              ∧__∧              \n\
+            ( • w • )   (\n\
+             |   Y  \\  (\n\
+        ___ |______)__________\n\
+       | ============|\n\
+       |____________________|\n\
+       ||                             ||', 'Belle found the wifi router and is stealing its warmth.\n\
+            ∧__∧\n\
+      ︵( • . •)︵\n\
+   / |_ |   V   | _| \  _________________\n\
+ /_ |_ \\_____/_ |_\\\n\
+|   : o [        ]  o: |\n\
+|________________| ________________\n', 'Belle is spying down a bug.\n\
+                    ∧_∧   \n\
+              )    ( •.•)             \'.\'\n\
+              ~(___¥)                \n\
+                 u    u              \n\
+      —/———/—————/————/\n'];
 
 var lonely_meows = [' is usually here by now, Belle thought. She is lonely. \n\
               ∧__∧　           \n\
@@ -440,112 +587,50 @@ function add_ending(statusmsg)
 }
 //every 20 mins 
 var post_count = 0;
-
-function meowstr(num)
-{
-	var rtn_str = ""
-	if(num == 0)
-	{
-		num_m = Math.floor(Math.random() * 5);
-		rtn_str += 'm'
-		for(i = 0; i < num_m; i++)
-		{
-			rtn_str += 'm'
-		}
-		
-		num_e = Math.floor(Math.random() * 5);
-		rtn_str += 'e'
-		for(i = 0; i < num_e; i++)
-		{
-			rtn_str += 'e'
-		}
-		
-		num_o = Math.floor(Math.random() * 5);
-		rtn_str += 'o'
-		for(i = 0; i < num_o; i++)
-		{
-			rtn_str += 'o'
-		}
-		
-		num_w = Math.floor(Math.random() * 5);
-		rtn_str += 'w'
-		for(i = 0; i < num_w; i++)
-		{
-			rtn_str += 'w'
-		}
-	}
-	else if (num ==1)
-	{
-		num_m = Math.floor(Math.random() * 5);
-		rtn_str += 'm'
-		for(i = 0; i < num_m; i++)
-		{
-			rtn_str += 'm'
-		}
-		
-		num_r = Math.floor(Math.random() * 5);
-		rtn_str += 'r'
-		for(i = 0; i < num_e; i++)
-		{
-			rtn_str += 'r'
-		}
-		
-		num_o = Math.floor(Math.random() * 5);
-		rtn_str += 'o'
-		for(i = 0; i < num_o; i++)
-		{
-			rtn_str += 'o'
-		}
-		
-		num_w = Math.floor(Math.random() * 5);
-		rtn_str += 'w'
-		for(i = 0; i < num_w; i++)
-		{
-			rtn_str += 'w'
-		}
-	}
-	else
-	{
-		num_p = Math.floor(Math.random() * 10);
-		rtn_str += 'p'
-		for(i = 0; i < num_p; i++)
-		{
-			rtn_str += 'p'
-		}
-		
-		
-		num_r = Math.floor(Math.random() * 10);
-		rtn_str += 'r'
-		for(i = 0; i < num_r; i++)
-		{
-			rtn_str += 'r'
-		}
-		
-	}
-	return rtn_str;
-}
-
-
+var liked_tweet = false;
 setInterval(function(){ 
-console.log(post_count);
-if(post_count % 6 != 0)
+
+console.log('post_count is ' + post_count);
+if(post_count % 5 != 0)
 {
-var stream = T.stream('statuses/filter', { track: ['cat'] });
+	
+ liked_tweet = false;
+ var stream = T.stream('statuses/filter', { track: ' my cat ' })
+ stream.on('tweet', like_tweet);
+ liked_tweet = true;
+
 }
 else
 {
 
 console.log("posting pic");
-	T.post('statuses/update', { status: add_ending(idle_meows[Math.floor(Math.random()*idle_meows.length)])}, function(err, data, response) {
+var s = Math.floor(Math.random()*idle_meows.length);
+console.log('going to tweet this one: ' + idle_meows[s]); 
+if (String(idle_meows[s]).includes("fridge")
+{
+T.post('statuses/update', { status: idle_meows[s]}, function(err, data, response) {
 				console.log("posted tweet!")
 				});
-		
+}
+else
+{	
+	T.post('statuses/update', { status: add_ending(idle_meows[s])}, function(err, data, response) {
+				console.log("posted tweet!")
+				});
+}
 }
 post_count += 1; 	
 
 }, 1000*60*30);
 
-
+function like_tweet(tweet)
+{
+	if(liked_tweet == false)
+	{
+		T.post('favorites/create', { id: tweet.id_str });
+	}
+	
+}
 
 function find_usr(currentValue, index, array)
 {
