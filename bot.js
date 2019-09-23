@@ -586,12 +586,12 @@ function add_ending(statusmsg)
 	return statusmsg;
 }
 //every 20 mins 
-var post_count = 0;
+var post_count = 1;
 var liked_tweet = false;
 setInterval(function(){ 
 
 console.log('post_count is ' + post_count);
-if(post_count % 5 != 0)
+if(post_count % 8 != 0)
 {
 	
  liked_tweet = false;
@@ -621,7 +621,7 @@ else
 }
 post_count += 1; 	
 
-}, 1000*60*30);
+}, 1000*60*20);
 
 function like_tweet(tweet)
 {
