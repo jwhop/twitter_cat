@@ -606,7 +606,7 @@ else
 console.log("posting pic");
 var s = Math.floor(Math.random()*idle_meows.length);
 console.log('going to tweet this one: ' + idle_meows[s]); 
-if (String(idle_meows[s]).includes("fridge")
+if (String(idle_meows[s]).includes("fridge"))
 {
 T.post('statuses/update', { status: idle_meows[s]}, function(err, data, response) {
 				console.log("posted tweet!")
