@@ -103,7 +103,7 @@ app.post('/', (req, res) => {
 				console.log("cant interact!");
 		}
 		
-		tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer);},1000*60*60*2400);
+		tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer);},1000*60*60*24);
 			
 	}
 	//starts with 'B'
