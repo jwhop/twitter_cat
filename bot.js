@@ -67,7 +67,7 @@ var can_tweet_RT = true;
 // mount the router on the app
 app.use('/', router);
 app.post('/', (req, res) => {
-	console.log(req.body.favorite_events[0]);
+	
 	//is a retweet, starts with B, isn't the main tweet
 	if((req.body.tweet_create_events != null) && 
 	(String(req.body.tweet_create_events[0].text).substring(0,2) == 'RT') &&
