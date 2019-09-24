@@ -109,7 +109,7 @@ app.post('/', (req, res) => {
 	//starts with 'B'
 	else if(req.body.favorite_events != null && 
 	String(req.body.favorite_events[0].favorited_status.text).substr(0,1) == 'B' &&
-        String(req.body.favorite_events[0].user.id_str) != ‘1173977167891456005’ )
+        String(req.body.favorite_events[0].user.id_str) != '1174536161060106240' )
 	{
 		var tweet = req.body.favorite_events[0];
 		if(typeof usr_directory.find(user => user.id === tweet.user.id_str) === 'undefined')
