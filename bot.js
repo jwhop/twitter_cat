@@ -597,7 +597,6 @@ if(post_count % 8 != 0)
  liked_tweet = false;
  var stream = T.stream('statuses/filter', { track: ' my cat ' })
  stream.on('tweet', like_tweet);
- liked_tweet = true;
 
 }
 else
@@ -625,10 +624,12 @@ post_count += 1;
 
 function like_tweet(tweet)
 {
+        console.log(‘someone tweeted about cats’);
 	if(liked_tweet == false)
 	{
 		T.post('favorites/create', { id: tweet.id_str });
-	}
+	        liked_tweet = true;
+        }
 	
 }
 
