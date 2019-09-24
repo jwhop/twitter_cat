@@ -595,10 +595,7 @@ console.log('post_count is ' + post_count);
 if(post_count % 17 != 0)
 {
 	
- liked_tweet = false;
- var stream = T.stream('statuses/filter', { track: ' my cat ' })
- stream.on('tweet', like_tweet);
-
+ http.get("http://bellethecatbot.herokuapp.com");
 }
 else
 {
