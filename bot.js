@@ -587,7 +587,7 @@ function add_ending(statusmsg)
 	return statusmsg;
 }
 //every 20 mins 
-var post_count = 0;
+var post_count = 1;
 var liked_tweet = false;
 setInterval(function(){ 
 
