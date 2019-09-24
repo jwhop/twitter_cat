@@ -587,12 +587,12 @@ function add_ending(statusmsg)
 	return statusmsg;
 }
 //every 20 mins 
-var post_count = 1;
+var post_count = 0;
 var liked_tweet = false;
 setInterval(function(){ 
 
 console.log('post_count is ' + post_count);
-if(post_count % 8 != 0)
+if(post_count % 179 != 0)
 {
 	
  liked_tweet = false;
@@ -621,11 +621,11 @@ else
 }
 post_count += 1; 	
 
-}, 1000*60*20);
+}, 1000*60);
 
 function like_tweet(tweet)
 {
-        console.log(‘someone tweeted about cats’);
+        console.log('someone tweeted about cats');
 	if(liked_tweet == false)
 	{
 		T.post('favorites/create', { id: tweet.id_str });
