@@ -592,7 +592,7 @@ var liked_tweet = false;
 setInterval(function(){ 
 
 console.log('post_count is ' + post_count);
-if(post_count % 179 != 0)
+if(post_count % 17 != 0)
 {
 	
  liked_tweet = false;
@@ -621,7 +621,7 @@ else
 }
 post_count += 1; 	
 
-}, 1000*60);
+}, 1000*60*10);
 
 function like_tweet(tweet)
 {
