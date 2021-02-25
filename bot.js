@@ -71,7 +71,8 @@ app.post('/', (req, res) => {
 	//is a retweet, starts with B, isn't the main tweet
 	if((req.body.tweet_create_events != null) && 
 	(String(req.body.tweet_create_events[0].text).substring(0,2) == 'RT') &&
-	(String(req.body.tweet_create_events[0].text).substring(20,21) == 'B') &&
+	((String(req.body.tweet_create_events[0].text).substring(20,21) == 'L') ||
+	(String(req.body.tweet_create_events[0].text).substring(20,21) == 'B')) &&
 	(String(req.body.tweet_create_events[0].id_str) != '1173977167891456005') &&
 	can_tweet_RT)
 	{
@@ -108,7 +109,8 @@ app.post('/', (req, res) => {
 	}
 	//starts with 'B'
 	else if(req.body.favorite_events != null && 
-	String(req.body.favorite_events[0].favorited_status.text).substr(0,1) == 'B' &&
+	String(((req.body.favorite_events[0].favorited_status.text).substr(0,1) == 'B') || 
+			((req.body.favorite_events[0].favorited_status.text).substr(0,1) == 'L'))	&&
         String(req.body.favorite_events[0].user.id_str) != '1173977167891456005' )
 	{
 		var tweet = req.body.favorite_events[0];
@@ -561,7 +563,7 @@ _________________________\n\
        z\n\
 ∧__∧ ____\n\
 ( n . n)___ )\\\n\
-               _/\n\      ''Belle is sleeping.\n\
+               _/\n\      ','Belle is sleeping.\n\
 _________________________\n\
            z\n\
          z\n\
@@ -658,7 +660,36 @@ u        u        [____]\n\ ','Belle is in her tunnel. \n\
      | |    |_ |   V   |  _|    | |\n\
      | |     |_ \\_____/_ |   | |\n\
        \\ \\                     / /\n\
-             =======\n\ '];
+             =======\n\ ','Like to pet the cat.\n\
+\n\
+              ∧__∧　           \n\
+　　     (  • . • ) (       \n\
+       ____ |  ¥  |__)__________\n\
+             (_\\__/_)                        \n\      ','Like to pet the cat.\n\
+            ____________z______\n\
+          /               Z\n\
+   ___ /       o     z          o\n\
+ /  o  \\ \     ∧__∧ ___\n\
+ \\____/ __( n . n)___ )\\_____\n\
+      ||                   °° _/\n\
+      ||______________________\n\      ','Like to pet the cat.\n\
+               ∧__∧　           \n\
+　　     (  • . • )             \n\
+          \\_u__u__//\n\
+          |              |       \n\
+          |_________|        \n\
+      ——————/———\n','Like to pet the cat. \n\
+                             ∧_∧\n\
+                     )___( ᵔ . ᵔ )\n\
+                     (____&)   ,.,.,.,.\n\
+                      u    u   /_____\\\n\      ','Like to pet the cat.\n\
+_________________________\n\
+                z\n\
+              z\n\
+     _____z_____\n\
+ //  ∧__∧ ____  \\\\\n\
+ ||  ( u . u)___ )\\  ||\n\
+   \\\\______°_° _/ //\n\      '];
 
 var lonely_meows = [' is usually here by now, Belle thought. She is lonely. \n\
               ∧__∧　           \n\
