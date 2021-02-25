@@ -138,7 +138,13 @@ app.post('/', (req, res) => {
 		{
 				console.log("cant interact!");
 		}
-		tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer);},1000*60*60*24);
+		let RemindChance = Math.floor(Math.random() * 101);
+		if(RemindChance <= 15)
+		{
+			let RemindTime = Math.floor(Math.random() * 17) + 7;
+			tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer);},1000*60*60*RemindTime);
+		}
+		
 			
 		
 	}
@@ -149,12 +155,12 @@ app.post('/', (req, res) => {
 });
 function lonely_time(name, timer)
 {
-	/* T.post('statuses/update', { status: personalize(lonely_meows[Math.floor(Math.random()*lonely_meows.length)], name)
+	T.post('statuses/update', { status: personalize(lonely_meows[Math.floor(Math.random()*lonely_meows.length)], name)
 					}, function(err, data, response) {
 				console.log("lonely! reply!")
 				});
 	timer = setTimeout(function(){lonely_time(name, timer)},1000*60*60*2400);
-	*/
+	
 }
 const PORT = process.env.PORT || 3000;
 http.createServer(app).listen(PORT, () => {
@@ -585,14 +591,14 @@ _________________________\n\
  //  ∧__∧ ____  \\\\\n\
  ||  ( n . n)___ )\\  ||\n\
    \\\\______°_° _/ //\n\      ','Belle is sleeping on the couch.\n\
-            ____________z______\n\
+            ___________________\n\
           /               Z\n\
    ___ /       o     z          o\n\
  /  o  \\ \     ∧__∧ ___\n\
  \\____/ __( u . u)___ )\\_____\n\
       ||                   °° _/\n\
       ||______________________\n\      ','Belle is sleeping on the couch.\n\
-            ____________z______\n\
+            ___________________\n\
           /               Z\n\
    ___ /       o     z          o\n\
  /  o  \\ \     ∧__∧ ___\n\
@@ -644,7 +650,7 @@ _________________________\n\
 u        u        [____]\n\ ','Belle is scared of the vacuum\n\
                             ╔ =====\n\
            ∧__∧         //\n\
-  /  ͡  \\( o w o)        //\n\
+  /  ͡  \\( • ~ •)        //\n\
 {  _____  }          //\n\
 u        u        [____]\n\ ','Belle is in her tunnel. \n\
            =======\n\
@@ -693,20 +699,30 @@ _________________________\n\
 
 var lonely_meows = [' is usually here by now, Belle thought. She is lonely. \n\
               ∧__∧　           \n\
-　　     (  • - • ) (       \n\
-       ____ |  ¥  |__)________________\n\
+　　     (  • o • ) (       \n\
+       ____ |  ¥  |__)______\n\
              (_\\__/_)                        \n\
       ——————/————/_/—',' ? , Where are they? Belle misses pets. \n\
               ∧__∧　           \n\
 　　     (  • _ • ) (       \n\
-       ____ |  ¥  |__)________________\n\
+       ____ |  ¥  |__)______\n\
              (_\\__/_)                        \n\
       ——————/————/_/—', ' isn\'t home , Belle misses them. \n\
               ∧__∧　           \n\
 　　     (  • o • ) (       \n\
-       ____ |  ¥  |__)_________________\n\
+       ____ |  ¥  |__)_______\n\
              (_\\__/_)                        \n\
-      ——————/————/_/—' ];
+      ——————/————/_/—', ' is a good friend, Belle is thinking of them. \n\
+              ∧__∧　           \n\
+　　     (  • w • ) (       \n\
+       ____ |  ¥  |__)______\n\
+             (_\\__/_)                        \n\
+      ——————/————/_/—',' ? , Where are they? Belle loves them. \n\
+              ∧__∧　           \n\
+　　     (  • ᴥ • ) (       \n\
+       ____ |  ¥  |__)______\n\
+             (_\\__/_)                        \n\
+      ——————/————/_/—'];
 function add_ending(statusmsg)
 {
 	for(i = 0; i < 20; i++)
