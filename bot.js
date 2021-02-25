@@ -370,72 +370,72 @@ var play_meows = [' grabs a toy mouse and tossses it.\n\
 
 var idle_meows = ['Belle is bored.\n\
 \n\
-             ∧__∧　            ============\n\
-　　    (  • w • ) (         || PLAY WITH ME ||\n\
-       ____ |  ¥  |__)______ ============_\n\
-             (_\\__/_)                        ||\n\      ', 'Belle is staring off into space.\n\
+                          ======\n\
+        ∧__∧　      ||   PLAY     ||\n\
+　 (  • w • ) (    || WITH ME ||\n\
+   __ |  ¥  |__)____ ======\n\
+      (_\\__/_)                 ||\n\      ', 'Belle is staring off into space.\n\
 \n\
               ∧__∧　           \n\
 　　     (  • . • ) (       \n\
-       ____ |  ¥  |__)__________________________\n\
+       ____ |  ¥  |__)__________\n\
              (_\\__/_)                        \n\      ', 'Belle is chasing some dust.\n\
                    ∧__∧　           \n\
 　　          (  • . • )        \n\
-            (    |  V  |  --                .\n\
+            (    |  V  |  --              .\n\
              ) (_____)   -\n\
                //    //                  \n\      ', 'Belle is playing with some string.\n\
              |   ∧_∧\n\
              (  (•ᴥ• )  (\n\
-      ____ ) `` \\V \\_)_______________________                  \n\
-                  ,(___)            \n\      ', 'Belle is eating some food. \n\
-                                  ∧_∧\n\
-                          )___( ᵔ . ᵔ )\n\
-     _____________ (____&)__,.,.,.,.  ___________     \n\
-                           u    u   /_____\\\n\      ', 'Belle is playing with a rubber band.\n\
+      ____ ) `` \\V \\_)____________\n\
+                  ,(___)            \n\      ','Belle is eating some food. \n\
+                             ∧_∧\n\
+                     )___( ᵔ . ᵔ )\n\
+                     (____&)   ,.,.,.,.\n\
+                      u    u   /_____\\\n\      ', 'Belle is playing with a rubber band.\n\
                  ∧_∧\n\
                ( •ヮ• )  (\n\
       _____\'\
 	  0\'\
 	  \\V \\_\
-	  )_______________________             \n\    \
-                    ,(___)            \n\      ', 'Belle is catching rays.\n\
-____________\\___________________ \\_____   \n\
-                  \\           _____  ∧__∧ \\\n\
-                       \\    _/|  ___ ﾉ _^.^ ﾉ \\\n\
-                         \\___/_   \\_,\\_,\\_,\\_,__\\\n\
-', 'Belle is lounging.\n\
+	  )_______\n\    \
+                    ,(___)            \n\      ','Belle is catching rays.\n\
+        \\              \\               \\\n\
+          \\           _\\___  ∧__∧ \\\n\
+            \\    _/|  ___ ﾉ _^.^ ﾉ \\\n\
+              \\___/_   \\_,\\_,\\_,\\_,__\\\n\      ','Belle is lounging.\n\
 \n\
          ∧__∧\n\
-  _ ︵(  • . • )︵__________________\n\
+  _ ︵(  • . • )︵____________\n\
      |_ |   V   | _|\n\
      |_ \\_____/_ |\n\
-_____________________________\n', 'Belle found a box.\n\
+_____________________________', 'Belle found a box.\n\
                ∧__∧　           \n\
 　　     (  • w • )             \n\
           \\_u__u__//\n\
           |              |       \n\
           |_________|        \n\
-      ——————/———\n', 'Belle scratches her post.\n\
+      ——————/———\n','Belle scratches her post.\n\
                ∧__∧　      ___   \n\
 　　     (  ^ . ^ )     (     )      \n\
        __(   /      | //__ | `  |_____   \n\
-            (_____|     /_ |  ` |_ \\n\
-      —————/__________\\\n', 'Belle is rolling around in someone\'s shoes.\n\
+            (_____|     /_ |  ` |_ \n\
+      —————/__________\\n\      ', 'Belle is rolling around in someone\'s shoes.\n\
 (                                                 \n\
 ) __n\'____n\'______\n\
  \\__________/( • m • )    \n\
        (__X_||)  V—V\n\
-                 \n', 'Belle is staring out of the window.\n\
+                 \n','Belle is staring out of the window.\n\
+  _________      ∧__∧              n\
+/___ |____/    ( • . • )  ____\n\
+/___ |____/         \\________/ \ \n\
+/___ |____/ _____u    u___  /\n\
+/____|___ /_______________\n\      ','Belle is staring out of the window.\n\
   __________        ∧__∧              \n\
-/       |        /     ( • . • )  ______\n\
-/____ |_____/           \\________/ \  \n\
-/       |        / _______u    u___  _/__________\\\n\
-/_____|____ /_______________________________\\\n', 'Belle is staring out of the window.\n\
-  __________        ∧__∧              \n\
-/       |        /     ( • . • ) \n\
-/____ |_____/       |   Y  \\  \n\
-/       |        / ___ |______)____\\______\n\
-/_____|____ /_____________________\n', 'Belle found the top of the fridge.\n\
+/____ |_____/      ( • . • ) \n\
+/____ |_____/       |   Y  \\  (\n\
+/____ |_____/  ___ |______)____\n\
+/_____|____ /_________________\n\      ', 'Belle found the top of the fridge.\n\
             ∧__∧\n\
    __︵(  • . • )︵___\n\
   /   |_ |   V   | _|     / \n\
@@ -451,85 +451,84 @@ _____________________________\n', 'Belle found a box.\n\
         ___ |______)__________\n\
        | ============|\n\
        |____________________|\n\
-       ||                             ||', 'Belle found the wifi router and is stealing its warmth.\n\
+       ||                             ||','Belle found the wifi router and is stealing its warmth.\n\
             ∧__∧\n\
       ︵( • w •)︵\n\
    / |_ |   V   | _| \  _________________\n\
  /_ |_ \\_____/_ |_\\\n\
-|   : o [        ]  o: |\n\
-|________________| ________________\n', 'Belle is spying down a bug.\n\
+|   : o [        ]  o: |\n\      ', 'Belle is spying down a bug.\n\
                     ∧_∧   \n\
               )    ( o.o)             \'.\'\n\
               ~(___¥)                \n\
                  u    u              \n\
-      —/———/—————/————/\n', 'Belle is bored.\n\
+      —/———/—————/————/\n','Belle is bored.\n\
 \n\
-             ∧__∧　            ============\n\
-　　    (  o w o ) (         || PLAY WITH ME ||\n\
-       ____ |  ¥  |__)______ ============_\n\
-             (_\\__/_)                        ||\n\      ', 'Belle is staring off into space.\n\
+                          ======\n\
+        ∧__∧　      ||   PLAY     ||\n\
+　 (  o w o ) (    || WITH ME ||\n\
+   __ |  ¥  |__)____ ======\n\
+      (_\\__/_)                 ||\n\      ','Belle is staring off into space.\n\
 \n\
               ∧__∧　           \n\
 　　     (  • - • ) (       \n\
-       ____ |  ¥  |__)__________________________\n\
-             (_\\__/_)                        \n\      ', 'Belle is chasing some dust.\n\
+       ____ |  ¥  |__)__________\n\
+             (_\\__/_)                        \n\      ','Belle is chasing some dust.\n\
                    ∧__∧　           \n\
 　　          (  • ᴥ • )        \n\
-            (    |  V  |  --                .\n\
+            (    |  V  |  --              .\n\
              ) (_____)   -\n\
-               //    //                  \n\      ', 'Belle is playing with some string.\n\
+               //    //                  \n\      ','Belle is playing with some string.\n\
              |   ∧_∧\n\
              (  (•.• )  (\n\
-      ____ ) `` \\V \\_)_______________________                  \n\
-                  ,(___)            \n\      ', 'Belle is eating some food. \n\
-                                  ∧_∧\n\
-                          )___( ᵔ w ᵔ )\n\
-     _____________ (____&)__,.,.,.,.  ___________     \n\
-                           u    u   /_____\\\n\      ', 'Belle is playing with a rubber band.\n\
+      ____ ) `` \\V \\_)____________\n\
+                  ,(___)            \n\      ','Belle is eating some food. \n\
+                             ∧_∧\n\
+                     )___( ᵔ w ᵔ )\n\
+                     (____&)   ,.,.,.,.\n\
+                      u    u   /_____\\\n\      ','Belle is playing with a rubber band.\n\
                  ∧_∧\n\
                ( •.• )  (\n\
       _____\'\
 	  0\'\
 	  \\V \\_\
-	  )_______________________             \n\    \
-                    ,(___)            \n\      ', 'Belle is catching rays.\n\
-____________\\___________________ \\_____   \n\
-                  \\           _____  ∧__∧ \\\n\
-                       \\    _/|  ___ ﾉ _^_^ ﾉ \\\n\
-                         \\___/_   \\_,\\_,\\_,\\_,__\\\n\
-', 'Belle is lounging.\n\
+	  )_______\n\    \
+                    ,(___)            \n\      ','Belle is catching rays.\n\
+        \\              \\               \\\n\
+          \\           _\\___  ∧__∧ \\\n\
+            \\    _/|  ___ ﾉ _^_^ ﾉ \\\n\
+              \\___/_   \\_,\\_,\\_,\\_,__\\\n\      ','Belle is lounging.\n\
 \n\
          ∧__∧\n\
-  _ ︵(  • w • )︵__________________\n\
+  _ ︵(  • w • )︵____________\n\
      |_ |   V   | _|\n\
      |_ \\_____/_ |\n\
-_____________________________\n', 'Belle found a box.\n\
+_____________________________\n\      ', 'Belle found a box.\n\
                ∧__∧　           \n\
 　　     (  • . • )             \n\
           \\_u__u__//\n\
           |              |       \n\
           |_________|        \n\
-      ——————/———\n', 'Belle scratches her post.\n\
+      ——————/———\n','Belle scratches her post.\n\
                ∧__∧　      ___   \n\
 　　     (  o w o )     (     )      \n\
        __(   /      | //__ | `  |_____   \n\
-            (_____|     /_ |  ` |_ \\n\
-      —————/__________\\\n', 'Belle is rolling around in someone\'s shoes.\n\
+            (_____|     /_ |  ` |_ \n\
+      —————/__________\\n\      ', 'Belle is rolling around in someone\'s shoes.\n\
 (                                                 \n\
 ) __n\'____n\'______\n\
  \\__________/( • m • )    \n\
        (__X_||)  V—V\n\
-                 \n', 'Belle is staring out of the window.\n\
+                 \n','Belle is staring out of the window.\n\
+  _________      ∧__∧              n\
+/___ |____/    ( ^__^ )  ____\n\
+/___ |____/         \\________/ \ \n\
+/___ |____/ _____u    u___  /\n\
+/____|___ /_______________\n\      ','Belle is staring out of the window.\n\
   __________        ∧__∧              \n\
-/       |        /     ( ^__^ )  ______\n\
-/____ |_____/           \\________/ \  \n\
-/       |        / _______u    u___  _/__________\\\n\
-/_____|____ /_______________________________\\\n', 'Belle is staring out of the window.\n\
-  __________        ∧__∧              \n\
-/       |        /     ( ^__^ ) \n\
-/____ |_____/       |   Y  \\  \n\
-/       |        / ___ |______)____\\______\n\
-/_____|____ /_____________________\n', 'Belle found the top of the fridge.\n\
+/____ |_____/      ( ^__^ ) \n\
+/____ |_____/       |   Y  \\  (\n\
+/____ |_____/  ___ |______)____\n\
+/_____|____ /_________________\n\      ', 'Belle found the top of the fridge.\n\
             ∧__∧\n\
    __︵(  • w • )︵___\n\
   /   |_ |   V   | _|     / \n\
@@ -545,18 +544,121 @@ _____________________________\n', 'Belle found a box.\n\
         ___ |______)__________\n\
        | ============|\n\
        |____________________|\n\
-       ||                             ||', 'Belle found the wifi router and is stealing its warmth.\n\
+       ||                             ||','Belle found the wifi router and is stealing its warmth.\n\
             ∧__∧\n\
       ︵( • . •)︵\n\
    / |_ |   V   | _| \  _________________\n\
  /_ |_ \\_____/_ |_\\\n\
-|   : o [        ]  o: |\n\
-|________________| ________________\n', 'Belle is spying down a bug.\n\
+|   : o [        ]  o: |\n\      ', 'Belle is spying down a bug.\n\
                     ∧_∧   \n\
               )    ( •.•)             \'.\'\n\
               ~(___¥)                \n\
                  u    u              \n\
-      —/———/—————/————/\n'];
+      —/———/—————/————/\n','Belle is sleeping.\n\
+_________________________\n\
+           z\n\
+         z\n\
+       z\n\
+∧__∧ ____\n\
+( n . n)___ )\\\n\
+               _/\n\      ''Belle is sleeping.\n\
+_________________________\n\
+           z\n\
+         z\n\
+       z\n\
+∧__∧ ____\n\
+( u . u)___ )\\\n\
+               _/\n\      ','Belle is sleeping.\n\
+_________________________\n\
+                z\n\
+              z\n\
+     _____z_____\n\
+ //  ∧__∧ ____  \\\\\n\
+ ||  ( u . u)___ )\\  ||\n\
+   \\\\______°_° _/ //\n\      ','Belle is sleeping.\n\
+_________________________\n\
+                z\n\
+              z\n\
+     _____z_____\n\
+ //  ∧__∧ ____  \\\\\n\
+ ||  ( n . n)___ )\\  ||\n\
+   \\\\______°_° _/ //\n\      ','Belle is sleeping on the couch.\n\
+            ____________z______\n\
+          /               Z\n\
+   ___ /       o     z          o\n\
+ /  o  \\ \     ∧__∧ ___\n\
+ \\____/ __( u . u)___ )\\_____\n\
+      ||                   °° _/\n\
+      ||______________________\n\      ','Belle is sleeping on the couch.\n\
+            ____________z______\n\
+          /               Z\n\
+   ___ /       o     z          o\n\
+ /  o  \\ \     ∧__∧ ___\n\
+ \\____/ __( n . n)___ )\\_____\n\
+      ||                   °° _/\n\
+      ||______________________\n\      ','Belle is sleeping.\n\
+   ¸   , \n\
+   -O-           /    |           z\n\
+    ¹   `          /    |           z\n\
+                   /    |          z \n\
+    @      @  /    |  ∧__∧ ____\n\
+    \\|/,,,,.,.\\|/ /     | ( u . u)___ )\\\n\
+    ▒▒▒▒  /     |_______°° _/_\n\      ','Belle is watching outside.\n\
+   ¸   , \n\
+   -O-           /    |\n\
+    ¹   `          /    |       ∧__∧ \n\
+    @      @  /    |     ( • w • )  (\n\
+    \\|/,,,,.,.\\|/ /     |      |   Y  \\  (\n\
+    ▒▒▒▒  /      |__ (          )_\n\ ','Belle is watching the rain.\n\
+    ▓▓   ▓▓\n\
+    /  ,   . ,/  ,  /   |\n\
+    /, ,   /   ,   ,/   |       ∧__∧\n\
+    @  ,   @  /    |     ( • w • )  (\n\
+    \\|/,,,,.,.\\|/ /     |      |   Y  \\  (\n\
+    ▒▒▒▒  /      |__ (          )_\n\      ','Belle is sleeping.\n\
+   ▓▓  ▓▓                       z\n\
+   * *   * *      /    |           z    \n\
+   *   *    *     /    |          z       \n\
+   *  *  *   *   /    |  ∧__∧ ____\n\
+   *,,,,*,..*,.,   /     | ( u . u)___ )\\\n\
+    ▒▒▒▒   /     |_______°° _/_\n\      ','Belle is watching the snow.\n\
+   ▓▓  ▓▓                       \n\
+   *   *    *     /    |      ∧__∧      \n\
+   *  *  *   *   /    |     ( • w • )  (\n\
+   *,,,,*,..*,.,   /     |      |   Y  \\  (\n\
+    ▒▒▒▒   /     |__ (          )_\n\ ','Belle is rolling around.\n\
+(                                                 \n\
+) __n\'____n\'______\n\
+ \\__________/( • m • )\n\
+ _____________V—V _____________________\n\ ','Belle is rolling around.\n\
+(                                                 \n\
+) __n\'____n\'______\n\
+ \\__________/( o m o )\n\
+ _____________V—V _____________________\n\ ','Belle is scared of the vacuum\n\
+                            ╔ =====\n\
+           ∧__∧         //\n\
+  /  ͡  \\( • ~ •)        //\n\
+{  _____  }          //\n\
+u        u        [____]\n\ ','Belle is scared of the vacuum\n\
+                            ╔ =====\n\
+           ∧__∧         //\n\
+  /  ͡  \\( o w o)        //\n\
+{  _____  }          //\n\
+u        u        [____]\n\ ','Belle is in her tunnel. \n\
+           =======\n\
+     / /       ∧__∧       \\ \\\n\
+     | |  ︵(  • w • )︵   | |\n\
+     | |    |_ |   V   |  _|    | |\n\
+     | |     |_ \\_____/_ |   | |\n\
+       \\ \\                     / /\n\
+             =======\n\ ','Belle is in her tunnel. \n\
+           =======\n\
+     / /       ∧__∧       \\ \\\n\
+     | |  ︵(  • . • )︵   | |\n\
+     | |    |_ |   V   |  _|    | |\n\
+     | |     |_ \\_____/_ |   | |\n\
+       \\ \\                     / /\n\
+             =======\n\ '];
 
 var lonely_meows = [' is usually here by now, Belle thought. She is lonely. \n\
               ∧__∧　           \n\
