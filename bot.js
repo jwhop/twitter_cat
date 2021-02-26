@@ -83,7 +83,7 @@ app.post('/', (req, res) => {
 				{
 					console.log("we got a new user!");
 					//console.log(tweet);
-					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, can_interact: true, interact_timer: null, visiting_timer: null});
+					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, can_interact: true, interact_timer: null, visiting_timer: null, visit_timer_waiting = false});
 
 				}
 		
@@ -104,7 +104,13 @@ app.post('/', (req, res) => {
 				console.log("cant interact!");
 		}
 		
-		tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer);},1000*60*60*24);
+		let RemindChance = Math.floor(Math.random() * 101);
+		if(RemindChance <= 15  || tg.visit_timer_waiting == true)
+		{
+			let RemindTime = Math.floor(Math.random() * 7) + 7;
+			tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg);},1000*60*60*RemindTime);
+			tg.visit_timer_waiting = true;
+		}
 			
 	}
 	//starts with 'B'
@@ -118,7 +124,7 @@ app.post('/', (req, res) => {
 				{
 					console.log("we got a new user!");
 					//console.log(tweet);
-					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1,can_interact: true, interact_timer: null,  visiting_timer: null});
+					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1,can_interact: true, interact_timer: null,  visiting_timer: null, visit_timer_waiting = false});
 
 				}
 		
@@ -139,10 +145,11 @@ app.post('/', (req, res) => {
 				console.log("cant interact!");
 		}
 		let RemindChance = Math.floor(Math.random() * 101);
-		if(RemindChance <= 15)
+		if(RemindChance <= 15  || tg.visit_timer_waiting == true)
 		{
-			let RemindTime = Math.floor(Math.random() * 17) + 7;
-			tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg.visiting_timer);},1000*60*60*RemindTime);
+			let RemindTime = Math.floor(Math.random() * 7) + 7;
+			tg.visiting_timer = setTimeout(function(){lonely_time(tg.name, tg);},1000*60*60*RemindTime);
+			tg.visit_timer_waiting = true;
 		}
 		
 			
@@ -153,13 +160,13 @@ app.post('/', (req, res) => {
 	
 	res.send("");
 });
-function lonely_time(name, timer)
+function lonely_time(name, tg)
 {
 	T.post('statuses/update', { status: personalize(lonely_meows[Math.floor(Math.random()*lonely_meows.length)], name)
 					}, function(err, data, response) {
 				console.log("lonely! reply!")
 				});
-	timer = setTimeout(function(){lonely_time(name, timer)},1000*60*60*2400);
+	tg.visit_timer_waiting = false;
 	
 }
 const PORT = process.env.PORT || 3000;
@@ -174,154 +181,154 @@ var pet_texts_1 = ['You give Belle some chin scratches', 'You scratch Belle behi
 var pet_texts_2 = ['She purrs and closes her eyes.', 'She purrs and nuzzles her head against your hand', 'She blinks slowly at you', 'You feel warm and fuzzy inside', 'She purrs and nods off to sleep', 'She starts kneading on a blanket'];
 var pet_meows = [' gives Belle some chin scratches.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She purrs and \n\
-       ____ |  ¥  |__)_________  nuzzles her head \n\
-             (_\\__/_)                 against their hand.          \n\
+　　     (  ^ . ^ ) (         She purrs and \n\
+       ____ |  ¥  |__)_     nuzzles her head \n\
+             (_\\__/_)      against their hand.\n\
       ——————/———', ' gives Belle some chin scratches.  \n\
               ∧__∧　           \n\
 　　     (  ^ . ^ ) (              She purrs and \n\
-       ____ |  ¥  |__)_________  closes her \n\
-             (_\\__/_)                   eyes.          \n\
+       ____ |  ¥  |__)____        closes her \n\
+             (_\\__/_)            eyes.\n\
       ——————/———',' gives Belle some chin scratches.  \n\
               ∧__∧　           \n\
 　　     (  ^ . ^ ) (              She blinks\n\
        ____ |  ¥  |__)_________  slowly at \n\
-             (_\\__/_)                   them.          \n\
+             (_\\__/_)           them. \n\
       ——————/———',' gives Belle some chin scratches.  \n\
               ∧__∧　           \n\
 　　     (  ^ . ^ ) (              They feel \n\
-       ____ |  ¥  |__)_________  warm and  \n\
-             (_\\__/_)             fuzzy inside.          \n\
+       ____ |  ¥  |__)_____      warm and  \n\
+             (_\\__/_)             fuzzy inside.\n\
       ——————/———',' gives Belle some chin scratches.  \n\
               ∧__∧　           \n\
 　　     (  ^ . ^ ) (              She purrs \n\
        ____ |  ¥  |__)_________  and nods \n\
-             (_\\__/_)                   off to sleep.          \n\
+             (_\\__/_)              off to sleep. \n\
       ——————/———',' gives Belle some chin scratches.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She starts \n\
-       ____ |  ¥  |__)_________  kneading on \n\
-             (_\\__/_)                   a blanket.          \n\
+　　     (  ^ . ^ ) (         She starts \n\
+       ____ |  ¥  |__)_____ kneading on \n\
+             (_\\__/_)         a blanket. \n\
       ——————/———', ' scratches Belle behind her ears.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She purrs and \n\
-       ____ |  ¥  |__)_________  nuzzles her head \n\
-             (_\\__/_)                 against their hand.          \n\
+　　     (  ^ . ^ ) (         She purrs and \n\
+       ____ |  ¥  |__)______nuzzles her head \n\
+             (_\\__/_)            against their hand.\n\
       ——————/———', ' scratches Belle behind her ears.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She purrs and \n\
-       ____ |  ¥  |__)_________  closes her \n\
-             (_\\__/_)                   eyes.          \n\
+　　     (  ^ . ^ ) (         She purrs and \n\
+       ____ |  ¥  |__)______closes her \n\
+             (_\\__/_)              eyes.\n\
       ——————/———',' scratches Belle behind her ears.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She blinks\n\
-       ____ |  ¥  |__)_________  slowly at \n\
-             (_\\__/_)                   them.          \n\
+　　     (  ^ . ^ ) (         She blinks\n\
+       ____ |  ¥  |__)______slowly at \n\
+             (_\\__/_)              them.\n\
       ——————/———',' scratches Belle behind her ears.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              They feel \n\
-       ____ |  ¥  |__)_________  warm and  \n\
-             (_\\__/_)             fuzzy inside.          \n\
+　　     (  ^ . ^ ) (         They feel \n\
+       ____ |  ¥  |__)______warm and  \n\
+             (_\\__/_)        fuzzy inside.\n\
       ——————/———',' scratches Belle behind her ears.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She purrs \n\
-       ____ |  ¥  |__)_________  and nods \n\
-             (_\\__/_)                   off to sleep.          \n\
+　　     (  ^ . ^ ) (         She purrs \n\
+       ____ |  ¥  |__)______and nods \n\
+             (_\\__/_)              off to sleep.\n\
       ——————/———',' scratches Belle behind her ears.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She starts \n\
-       ____ |  ¥  |__)_________  kneading on \n\
-             (_\\__/_)                   a blanket.          \n\
+　　     (  ^ . ^ ) (         She starts \n\
+       ____ |  ¥  |__)______kneading on \n\
+             (_\\__/_)              a blanket.\n\
       ——————/———', ' pats Belle on her head.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She purrs and \n\
-       ____ |  ¥  |__)_________  nuzzles her head \n\
-             (_\\__/_)                 against their hand.          \n\
+　　     (  ^ . ^ ) (         She purrs and \n\
+       ____ |  ¥  |__)______nuzzles her head \n\
+             (_\\__/_)            against their hand.\n\
       ——————/———', ' pats Belle on her head.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She purrs and \n\
-       ____ |  ¥  |__)_________  closes her \n\
-             (_\\__/_)                   eyes.          \n\
+　　     (  ^ . ^ ) (         She purrs and \n\
+       ____ |  ¥  |__)______closes her \n\
+             (_\\__/_)              eyes.\n\
       ——————/———',' pats Belle on her head.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She blinks\n\
-       ____ |  ¥  |__)_________  slowly at \n\
-             (_\\__/_)                   them.          \n\
+　　     (  ^ . ^ ) (         She blinks\n\
+       ____ |  ¥  |__)______slowly at \n\
+             (_\\__/_)              them.\n\
       ——————/———',' pats Belle on her head.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              They feel \n\
-       ____ |  ¥  |__)_________  warm and  \n\
-             (_\\__/_)             fuzzy inside.          \n\
+　　     (  ^ . ^ ) (         They feel \n\
+       ____ |  ¥  |__)______warm and  \n\
+             (_\\__/_)        fuzzy inside.\n\
       ——————/———',' pats Belle on her head.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She purrs \n\
-       ____ |  ¥  |__)_________  and nods \n\
-             (_\\__/_)                   off to sleep.          \n\
+　　     (  ^ . ^ ) (         She purrs \n\
+       ____ |  ¥  |__)______and nods \n\
+             (_\\__/_)              off to sleep.\n\
       ——————/———',' pats Belle on her head.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She starts \n\
-       ____ |  ¥  |__)_________  kneading on \n\
-             (_\\__/_)                   a blanket.          \n\
+　　     (  ^ . ^ ) (         She starts \n\
+       ____ |  ¥  |__)______kneading on \n\
+             (_\\__/_)              a blanket.\n\
       ——————/———', ' pets Belle along her back.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She purrs and \n\
-       ____ |  ¥  |__)_________  nuzzles her head \n\
-             (_\\__/_)                 against their hand.          \n\
+　　     (  ^ . ^ ) (         She purrs and \n\
+       ____ |  ¥  |__)______nuzzles her head \n\
+             (_\\__/_)            against their hand.\n\
       ——————/———', ' pets Belle along her back.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She purrs and \n\
-       ____ |  ¥  |__)_________  closes her \n\
-             (_\\__/_)                   eyes.          \n\
+　　     (  ^ . ^ ) (         She purrs and \n\
+       ____ |  ¥  |__)______closes her \n\
+             (_\\__/_)              eyes.\n\
       ——————/———',' pets Belle along her back.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She blinks\n\
-       ____ |  ¥  |__)_________  slowly at \n\
-             (_\\__/_)                   them.          \n\
+　　     (  ^ . ^ ) (         She blinks\n\
+       ____ |  ¥  |__)______slowly at \n\
+             (_\\__/_)              them.\n\
       ——————/———',' pets Belle along her back.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              They feel \n\
-       ____ |  ¥  |__)_________  warm and  \n\
-             (_\\__/_)              fuzzy inside.          \n\
+　　     (  ^ . ^ ) (         They feel \n\
+       ____ |  ¥  |__)______warm and  \n\
+             (_\\__/_)         fuzzy inside.\n\
       ——————/———',' pets Belle along her back.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She purrs \n\
-       ____ |  ¥  |__)_________  and nods \n\
-             (_\\__/_)                   off to sleep.          \n\
+　　     (  ^ . ^ ) (         She purrs \n\
+       ____ |  ¥  |__)______and nods \n\
+             (_\\__/_)              off to sleep.\n\
       ——————/———',' pets Belle along her back.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She starts \n\
-       ____ |  ¥  |__)_________  kneading on \n\
-             (_\\__/_)                   a blanket.          \n\
+　　     (  ^ . ^ ) (         She starts \n\
+       ____ |  ¥  |__)______kneading on \n\
+             (_\\__/_)              a blanket.\n\
       ——————/———', ' gives Belle belly rubs.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She purrs and \n\
-       ____ |  ¥  |__)_________  nuzzles her head \n\
-             (_\\__/_)                 against their hand.          \n\
+　　     (  ^ . ^ ) (        She purrs and \n\
+       ____ |  ¥  |__)______nuzzles her head \n\
+             (_\\__/_)            against their hand.\n\
       ——————/———', ' gives Belle belly rubs.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She purrs and \n\
-       ____ |  ¥  |__)_________  closes her \n\
-             (_\\__/_)                   eyes.          \n\
+　　     (  ^ . ^ ) (         She purrs and \n\
+       ____ |  ¥  |__)______closes her \n\
+             (_\\__/_)              eyes.\n\
       ——————/———',' gives Belle belly rubs.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She blinks\n\
-       ____ |  ¥  |__)_________  slowly at \n\
-             (_\\__/_)                   them.          \n\
+　　     (  ^ . ^ ) (         She blinks\n\
+       ____ |  ¥  |__)______slowly at \n\
+             (_\\__/_)              them.\n\
       ——————/———',' gives Belle belly rubs.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              They feel \n\
-       ____ |  ¥  |__)_________  warm and  \n\
-             (_\\__/_)             fuzzy inside.          \n\
+　　     (  ^ . ^ ) (         They feel \n\
+       ____ |  ¥  |__)______warm and  \n\
+             (_\\__/_)        fuzzy inside.\n\
       ——————/———',' gives Belle belly rubs.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She purrs \n\
-       ____ |  ¥  |__)_________  and nods \n\
-             (_\\__/_)                   off to sleep.          \n\
+　　     (  ^ . ^ ) (         She purrs \n\
+       ____ |  ¥  |__)______and nods \n\
+             (_\\__/_)              off to sleep.\n\
       ——————/———',' gives Belle belly rubs.  \n\
               ∧__∧　           \n\
-　　     (  ^ . ^ ) (              She starts \n\
-       ____ |  ¥  |__)_________  kneading on \n\
-             (_\\__/_)                   a blanket.          \n\
+　　     (  ^ . ^ ) (         She starts \n\
+       ____ |  ¥  |__)______kneading on \n\
+             (_\\__/_)              a blanket.\n\
       ——————/———'
 	  
 	  ];
@@ -434,7 +441,7 @@ _____________________________', 'Belle found a box.\n\
  \\__________/( • m • )    \n\
        (__X_||)  V—V\n\
                  \n','Belle is staring out of the window.\n\
-  _________      ∧__∧              n\
+  _________      ∧__∧              \n\
 /___ |____/    ( • . • )  ____\n\
 /___ |____/         \\________/ \ \n\
 /___ |____/ _____u    u___  /\n\
@@ -527,7 +534,7 @@ _____________________________\n\      ', 'Belle found a box.\n\
  \\__________/( • m • )    \n\
        (__X_||)  V—V\n\
                  \n','Belle is staring out of the window.\n\
-  _________      ∧__∧              n\
+  _________      ∧__∧              \n\
 /___ |____/    ( ^__^ )  ____\n\
 /___ |____/         \\________/ \ \n\
 /___ |____/ _____u    u___  /\n\
