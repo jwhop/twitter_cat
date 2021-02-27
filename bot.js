@@ -83,7 +83,7 @@ app.post('/', (req, res) => {
 				{
 					console.log("we got a new user!");
 					//console.log(tweet);
-					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, can_interact: true, interact_timer: null, visiting_timer: null, visit_timer_waiting = false});
+					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1, can_interact: true, interact_timer: null, visiting_timer: null, visit_timer_waiting : false});
 
 				}
 		
@@ -124,7 +124,7 @@ app.post('/', (req, res) => {
 				{
 					console.log("we got a new user!");
 					//console.log(tweet);
-					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1,can_interact: true, interact_timer: null,  visiting_timer: null, visit_timer_waiting = false});
+					usr_directory.push({name: tweet.user.screen_name, id: tweet.user.id_str, pet_score: 0, play_score: 0, feed_score: 0, num_visits: 1,can_interact: true, interact_timer: null,  visiting_timer: null, visit_timer_waiting : false});
 
 				}
 		
