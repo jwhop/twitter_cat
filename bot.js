@@ -27,6 +27,7 @@ var router = express.Router();
 
 // a middleware function with no mount path. This code is executed for every request to the router
 router.use(function (req, res, next) {
+  console.log('Request made to router');
   console.log('Time:', Date.now())
   next()
 });
