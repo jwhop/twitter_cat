@@ -1,7 +1,6 @@
 var Twitter = require('twit');
 const http = require('http');
 const express = require('express');
-const MessagingResponse = require('twilio').twiml.MessagingResponse;
 var bodyParser = require('body-parser');
 var crypto = require('crypto');
 
@@ -36,9 +35,7 @@ router.use(function (req, res, next) {
 router.use('/', function (req, res, next) {
 	
 	if(req.query.crc_token != null)
-	{
-	
-	
+	{	
 	
 	hmac = crypto.createHmac('sha256', process.env.CONSUMER_SECRET).update(req.query.crc_token).digest('base64')
 
@@ -68,7 +65,7 @@ var can_tweet_RT = true;
 // mount the router on the app
 app.use('/', router);
 app.post('/', (req, res) => {
-	
+	console.log('blah');
 	//is a retweet, starts with B, isn't the main tweet
 	if((req.body.tweet_create_events != null) && 
 	(String(req.body.tweet_create_events[0].text).substring(0,2) == 'RT') &&
