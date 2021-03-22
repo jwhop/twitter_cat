@@ -22,7 +22,8 @@ console.log('Authentication successful. Running bot...\r\n')
 const app = express();
 app.use(bodyParser.json());
 var router = express.Router();
-
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
 
 // a middleware function with no mount path. This code is executed for every request to the router
 router.use(function (req, res, next) {
