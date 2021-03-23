@@ -46,6 +46,7 @@ router.use('/', function (req, res, next) {
 	var obj = JSON.parse(txt);
 	
 	res.send(obj);
+       console.log("sent token");
 	}
   next()
 }, 
