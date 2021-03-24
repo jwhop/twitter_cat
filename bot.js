@@ -67,7 +67,7 @@ function personalize(str, usr)
 var can_tweet_RT = true;
 // mount the router on the app
 app.use('/', router);
-app.post('/', (req, res) => {
+app.post('/webhooks/twitter', (req, res) => {
 	console.log('blah');
 	//is a retweet, starts with B, isn't the main tweet
 	if((req.body.tweet_create_events != null) && 
