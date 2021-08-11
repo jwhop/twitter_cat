@@ -145,7 +145,7 @@ app.post('/webhooks/twitter', (req, res) => {
 		{
 				console.log("cant interact!");
 		}
-		let RemindChance = Math.floor(Math.random() * 101);
+		let RemindChance = Math.floor(Math.random() * 10001);
 		if(RemindChance <= 15  || tg.visit_timer_waiting == true)
 		{
 			let RemindTime = Math.floor(Math.random() * 7) + 7;
